@@ -28,8 +28,8 @@ including
   + workshops at various conferences, 
   + self-paced tutorials on the neondataskills.org website, and 
   + this Data Institute;
-* our K-12 & informal educator focused Citizen Science Academy with a new 
-course on using data in the classroom and
+* our K-12 & informal educator focused Citizen Science Academy 
+  + with a new course on using data in the classroom and
 * our undergraduate summer internship program hosted at NEON headquarters. 
 
 
