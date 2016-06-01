@@ -8,7 +8,7 @@ output: html_document
 This script creates plots from raster LiDAR data collected over NEON's Lower 
 Teakettle field site. 
 
-```{r set-up} 
+```{r set-up, echo=FALSE, warning=FALSE} 
 # load needed packages
 library(rgdal)
 library(raster)
