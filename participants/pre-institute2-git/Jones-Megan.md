@@ -1,20 +1,3 @@
----
-layout: post
-title: "Bio: Megan A. Jones"
-date: 2016-05-19
-authors: [ ]
-categories: [tutorial-series]
-tags: [ ]
-mainTag: bio
-code1: 
-image:
- feature: data-institute-2016.png
- credit:
- creditlink:
-permalink: /bios/jonesm
-comments: true
----
-
 ## Megan A. Jones
 
 Hello, I am a facilitator of the **2016 NEON Data Institute**. I am both a 
