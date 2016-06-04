@@ -9,6 +9,7 @@ theme: readable
 
 ### Short Biography
 Hi, I'm a Ph.D. student and participant at the 2016 NEON Data Institute. <span style="color:green">__Forest ecology__</span> is my jam. Most of my current research looks at how organisms and ecosystems respond to stress, such as drought and air pollution. I'm also interested in what goes on in ecosystems after they endure such a disturbance. I work at the University of California Berkeley, and my field studies are in the Sierra Nevada range. My full bio is available [here.](https://en.wikipedia.org/wiki/Triceratops)
+	+ NEON domains: __Pacific Southwest__, Pacific Northwest, Great Basin, Southern Rockies, Northeast
 
 ### Some Course Goals
 * Practice and become more comfortable using version control with _collaborative_ work (there is not very much merging or forking when I'm working alone)
