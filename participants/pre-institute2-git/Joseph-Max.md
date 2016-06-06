@@ -6,11 +6,10 @@ I am hoping to become more proficient with remotely sensed data by taking this c
 
 ## Capstone Project
 
-Mosquitoes are the worst.
-But on windy days, they don't seem so bad.
-What exactly is the relationship between wind velocity and mosquito abundance?
-I propose find out by modeling mosquito trapping data as a function of 2D wind speed data.
+Did fire history influence erosion in the 2013 Boulder floods? 
+Because fire destroys soil-stabilizing vegetation, it is possible that *all else being equal*, areas that had recently burned prior to the 2013 floods may have experienced more erosion.
 
-First, we will need to identify stations and time intervals with overlapping wind velocity and mosquito trapping data.
-Second, we will temporally align these two datasets so that each "data point" has a value of wind speed and mosquito abundance, probably averaged within some time intervals (e.g., hours or days) within locations (e.g., NEON sites).
-Last, we will construct a statistical model to evaluate how mosquito capture data relates to wind speed.
+I propose to investigate the relationship between burn history and erosion using the 2013 pre and post flood NEON LiDAR data. 
+Boulder County provides shapefiles of historical fire boundaries, with information on fire age/time since ignition for 33 fires, spanning the years 1978 to 2012.
+We could investigate binning the landscape so that comparisons among areas are valid, for instance considering only regions with comparable aspect, slope, and hydrogeographic traits. 
+Eventually, we would like to compare the distributions of pixel-wise elevation changes for each area, mapping the distribution in some way to fire age (e.g., a plot with fire age on the x-axis and mean absolute change in elevation on the y-axis). 
