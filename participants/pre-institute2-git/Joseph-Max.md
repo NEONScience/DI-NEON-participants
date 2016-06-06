@@ -13,3 +13,8 @@ I propose to investigate the relationship between burn history and erosion using
 Boulder County provides shapefiles of historical fire boundaries, with information on fire age/time since ignition for 33 fires, spanning the years 1978 to 2012.
 We could investigate binning the landscape so that comparisons among areas are valid, for instance considering only regions with comparable aspect, slope, and hydrogeographic traits. 
 Eventually, we would like to compare the distributions of pixel-wise elevation changes for each area, mapping the distribution in some way to fire age (e.g., a plot with fire age on the x-axis and mean absolute change in elevation on the y-axis). 
+
+Alternatively, if the data are available, an even better approach would involve extracting vegetation data from the LiDAR data. 
+For instance, we specifically expect that large live trees would be particularly stabilizing. 
+If we could link the height of plants to the amount of elevation change due to erosion, all using the LiDAR data, then probably we would have a better resolved understanding of the soil-stabilizing effects of vegetation. 
+
