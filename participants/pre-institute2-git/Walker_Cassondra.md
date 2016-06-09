@@ -11,5 +11,9 @@ I study how environmental conditions operate at different spatial scales (extent
 I am looking forward to learing how to work with remote sensing data in R.
 I am also looking forward to learing the capabilites and limitations of working with NEON data. 
 
+***
+##Capstone Project:
+
+My project idea is to model Leaf Area Index at large spatial extents at varying resolutions.  I would like to develop a procedure to model the relationship between Leaf Area Index and Normalized Difference Vegetation Index for the Great Plains (North, Central, and Southern Plains NEON Domains), where I conduct most of my research. Since LAI is not readily available at fine spatial resolutions, I would like to develop a procedure that will allow me to estimate LAI values from known NDVI values.  I believe that I will need to use a combination of NEON data as well as data from other sources to accomplish this. 
 
 
