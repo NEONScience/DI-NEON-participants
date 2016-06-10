@@ -12,11 +12,11 @@ I'm interested in strengthening skills for using hyperspectral data for identify
 
 ## Capstone Project Idea
 
-General questions:
+___General questions___:
 * Is it possible to identify functional groups (e.g. invasive, legume, or deciduous/evergreen species), and ultimately functional traits, using hyperspectral data?
 * How do functional groups/traits change over time and space in tropical forests? 
 
-Data required:
+___Data required___:
 *Hyperspectral data (to detect species and functional composition)
 *Site surveys and inventories (to validate observations)
 *LiDAR (to detect changes in vegetation structure over time/space)
