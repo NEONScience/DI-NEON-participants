@@ -14,7 +14,7 @@ library(rgdal)
 library(raster)
 
 # set working directory to ensure R can find the file we wish to import
-setwd("~/Documents/data/data-institute-2016/")
+setwd("~/Documents/data/NEONDI-2016/")
 
 ```
 
