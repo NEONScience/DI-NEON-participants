@@ -1,0 +1,102 @@
+---
+title: "Exploring NEON LiDAR Data"
+author: "Catherine Hulshof DLP"
+date: "June 13, 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Catherine M. Hulshof De La Peña, PhD
+
+***
+
+## Bio
+
+I am an Assistant Professor in the Department of Biology at the University of Puerto Rico Mayagüez. I study the effects of climatic variability on plant and insect function. In particular I study how plant functional traits influence Lepidoptera herbivores. 
+
+## About My Project
+
+I am interested in using hyperspectral data to identify key plant functional groups (e.g. invasive species or leguminous plant species).
+
+## Week 3 Activity
+
+This page demonstrates the use of the NEON Teakettle LiDAR data products in R. We begin by loading the packages required to work with raster data in R and set the working directory.
+
+```{r setup-read-data}
+   library(rgdal)
+   library(raster)
+
+   # set working directory to ensure R can find the file we wish to import
+   setwd("C:/Users/Catherine/Documents/data/NEONDI-2016/")
+
+```
+
+Now, we will load the 'TEAK_lidarDSM' raster file:
+ 
+```{r load-dsm-raster }
+
+   # import dsm
+   teak_dsm <- raster("NEONdata/D17-California/TEAK/2013/lidar/TEAK_lidarDSM.tif")
+   
+```
+
+Here, we can see the use of 'eval=FALSE' syntax. The code in this chunk will still render in our knitted HTML output, however it will not be evaluated or run by 'R':
+
+```{r intro-option, eval=FALSE}
+# the code here will not be processed by R 
+# but it will appear on your output document
+1+2
+```
+
+Let's begin by plotting the 'teak_dsm' raster object. We will change plot colors and include a title:
+
+```{r plot-dsm-raster }
+# Plot raster object
+  plot(teak_dsm, main="Digital Surface Model Lower Teakettle field site")
+```
+
+Let's import another raster object, the canopy height model 'TEAK_lidarCHM.tif', and plot it as well:
+
+```{r load-dsm-raster2 }
+
+# Import dsm
+   teak_lidarCHM <- raster("NEONdata/D17-California/TEAK/2013/lidar/TEAK_lidarCHM.tif")
+# Plot raster object
+  plot(teak_lidarCHM, main="LIDAR Lower Teakettle field site")
+```
+
+Create a histogram for the DSM:
+
+```{r histogram-raster-dsm }
+
+# Plot distribution of raster values for the DSM
+DSMhist<-hist(teak_dsm, breaks=5,
+     main="Histogram Digital Surface Model Lower Teakettle Field Site",
+     col="wheat3",  # changes bin color
+     xlab= "Elevation (m)")  # label the x-axis
+
+# Where are breaks and how many pixels in each category?
+DSMhist$breaks
+DSMhist$counts
+
+```
+
+Repeat this for the LiDAR Canopy height model (CHM):
+
+```{r histogram-raster-chm}
+
+# Plot distribution of raster values for the LiDAR CHM
+CHMhist<-hist(teak_lidarCHM, main="Histogram LiDAR CHM Lower Teakettle Field Site",
+     col="wheat3",  # changes bin color
+     xlab= "Canopy Height (m)")  # label the x-axis
+
+# Where are breaks and how many pixels in each category?
+CHMhist$breaks
+CHMhist$counts
+
+```
+
+In this tutorial, we learned how to create an R markdown document and Knit the .Rmd file to HTML. By plotting the histogram frequency of the canopy height model we can see that the plant canopy of the Lower Teakettle Field site is below 5 meters in height and there are a few very large datapoints which require further inspection. 
