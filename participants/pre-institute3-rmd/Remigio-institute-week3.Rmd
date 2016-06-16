@@ -6,11 +6,13 @@ output: html_document
 ---
 
 
-**Remigio Bio and Research Interests:**
+# Remigio Bio and Research Interests:
+
 I'm Richard, I also go by Rich, and a current PhD student at Columbia University’s School of Public Health studying environmental health sciences. Prior to starting my doctoral studies, I worked as an environmental engineer for the US Environmental Protection Agency (USEPA) working broadly on water quality protection at the national scale. My research interests relates to characterizing the impacts of observed extreme weather events, like heat, on vulnerable populations. I am also interested in understanding the ecologic role of improved land cover and physical infrastructure design in influencing population health. I’m pretty *green* to remote sensing and interested in characterizing surface temperatures and land cover as explanatory factors in epidemiological models. I have a general background in biostatistics and GIS/spatial analyses. My goal is to learn to harness geospatial data, like remote sensing and LiDAR, into epidemiological models to predict health impacts caused by climate and land cover changes in urban and peri-urban regions.
+
 ---
 
-**About My Proposed Project:**
+## About My Proposed Project:
 
 *Applying an eco-epidemiological framework to determine the role of land cover and temperature on ecosystem health at selected NEON eco-region study sites*
 
@@ -19,12 +21,12 @@ By using an eco-epidemiological framework, we could consider a hierarchical mode
 A potential proposal is to characterize land cover and temperature at selected eco-regions that could represent varying levels of vulnerability due to climate change (e.g. Mid-Atlantic, Northeast, Tanga, etc. might be considered highly vulnerable eco-regions of interest). There are varying epidemiological designs that can be applied and tested. For example, time series analysis if we choose to look at year-round temperature data and its relationship to changes or shifts in land cover, and ultimately on ecosystem health. Or using case-crossover to study pre-defined heat-wave events and matching non-heat wave events in relationship to land cover and ecosystem health.  Given the enormity of the data universe, biogeochemical processes are not being addressed however will likely be a crucial theme and a critical need for workshop peer collaborators.
 ---
 
-**Applicable NEON Data Sources**
+### Applicable NEON Data Sources
 
 * Flux tower measurements
 * Airborne remote sensing
 
-**Relevant environmental markers of interest**
+#### Relevant environmental markers of interest
 
 *Land cover*
 
@@ -51,7 +53,7 @@ A potential proposal is to characterize land cover and temperature at selected e
 
 ---
 
-**Week 3 Activity**
+##### Week 3 Activity
 
 In this page, this page will showcase the NEON Lower Teakettle LiDAR data products through R. Following will be code and outputs used to process and characterize the data. 
 
@@ -74,11 +76,11 @@ Here goes nothing:
 library(rgdal)
 library(raster)
 
-   # set working directory to ensure R can find the file we wish to import
+# set working directory to ensure R can find the file we wish to import
    setwd("~/Documents/data/NEONDI2016TEAK/")
+
 # import dsm
    teak_dsm <- raster("NEONdata/D17-California/TEAK/2013/lidar/TEAK_lidarDSM.tif")
- 
  
 #plot dsm
   plot(teak_dsm,
@@ -105,6 +107,8 @@ plot(teak_chm,
 
 Note that CHM raster contain sparse data at high frequency. Be sure to log-transform
 frequency and to adjust x-axis range. I used 3.85 as my lower bound and 4.1 as my upper.
+
+You will note that DSM is slightly skewed to the left and indicates higher elvation. CHM indicates a very tight range in tree canopy height. 
 
 ```{r, echo=FALSE}
 hist(teak_dsm,
