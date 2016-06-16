@@ -1,0 +1,83 @@
+---
+title: "Explore NEON LiDAR Data"
+author: "sjmc"
+date: "June 9, 2016"
+output: 
+  html_document: 
+    theme: spacelab
+---
+
+### Short Bio
+Hi, I'm a Ph.D. student and participant at the 2016 NEON Data Institute. <span style="color:green">__Forest ecology__</span> is my jam. Much of my research looks at how organisms and ecosystems respond to stress, such as drought and air pollution. I'm also interested in what goes on in ecosystems after disturbances. I work at the University of California Berkeley, and my field studies are in the Sierra Nevada. My full bio is available [here.](https://en.wikipedia.org/wiki/Triceratops)
+	
+### About My Workshop Project
+  * I'm interested in investigating how a disturbance - detected with hyperspectral veg data or simply known from ground measurements - is reflected in CO2 or other fluxes.
+    * Hoping to work w/ data from the Pacific Southwest or Pacific Northwest domains, and am especially interested in Teakettle, though I know it is still getting up and running. 
+    * Data needed may include:
+        - hyperspectral vegetation data
+        - standardized forest structure measurements (DBH, height, maybe biomass)
+        - fluxes for pre- and post- event
+        - (External) disturbance event information, such as a fire or mortality event.
+    * In the process, I'm also interested in quantifying uncertainties when combining vegetation plots or LiDAR w/ remotely sensed data. 
+  
+### Week 3 Activity
+  * This page is a demo of a few NEON LiDAR products using Teakettle Experimental Forest as an example
+    - And, practice using __RMarkdown__
+
+#####1. First, let's get set up:
+```{r setup-read-data, message=FALSE }
+  #load libraries
+    library(rgdal)
+    library(raster)
+   # set working directory to ensure R can find the file we wish to import
+   setwd("/Users/stellac/Documents/HomeWork/data/NEONDI-2016/")
+```
+* Note that in order to knit properly, your .md file (this document) should be saved in that same wd. At least, that seems to be what the knittr documentation says. 
+
+#####2. Load the Teakettle elevation raster:
+```{r load-dsm-raster }
+   # import dsm
+    teak_dsm <- raster("NEONdata/D17-California/TEAK/2013/lidar/TEAK_lidarDSM.tif" )
+   
+```
+#####3. View the Teakettle elevation raster (digital surface model):
+```{r plot-dsm-raster }
+
+   # plot it up flat
+   plot(teak_dsm, main= "Teakettle Digital Surface Model (m)")
+   
+```
+
++ Observations: looks like a ridgetop in the upper left. At this elevation, could be bare granite.
++ High points are probably trees.
+
+#####4. View that surface model as a histogram:
+```{r histo-dsm-raster, warning=FALSE}
+   # plot it up histogram
+   hist(teak_dsm,breaks=20,col="pink",ylim = c(0,20000),main = "Teakettle Elevation Histogram (m)",xlab = "Elevation (meters)",ylab="Frequency")
+
+```
+
+#####5. Load the Teakettle LiDAR-derived canopy height model:
+```{r load-CHM-raster }
+   # import CHM
+   teak_CHM <- raster("NEONdata/D17-California/TEAK/2013/lidar/TEAK_lidarCHM.tif" )
+```
+#####6. View the Teakettle LiDAR-derived canopy height model:
+```{r plot-CHM-raster }
+   # plot it up flat
+#note to self : tried it w/ this added, but still just a few specks
+#breaks = c(seq(0,70,by=5)), col=terrain.colors(14))
+   plot(teak_CHM, main= "Teakettle Canopy Height Model")
+```
+
++ Observations: seems like this might be a location w/ very few mature trees? Not sure how to interpret this, I'd expect a dense forest - especially based on the DSM. Not a very large area, though.
+
+#####7. Canopy height model as a histogram, log-log scale
+```{r histo-CHM-histo, warning=FALSE }
+   # plot it up histogram-wise
+   #log scale to see detail/variation 
+   hist(log(teak_CHM), breaks=50,col="yellow",main = "Teakettle Canopy Height Model Histogram",ylab = "Log Frequency", xlab = "log height (m)")
+```
+
+ + that's all for now!
