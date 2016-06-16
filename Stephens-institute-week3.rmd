@@ -1,0 +1,55 @@
+---
+title: "Plotting Lidar NEON Teak Data"
+author: "Jeffrey Stephens"
+output: html_document
+---
+
+# **Bio**
+
+Hi, I am Jeffrey Stephens and I am pursuing a PhD in Geospatial Science and Engineering at South Dakota State University where I am focusing on remote sensing and natural resources. Currently, I am using MODIS and Landsat imagery to study phenology and primary production to further understand ecological processes. In my free time when I am not studying I typically like to spend it outdoors.
+
+## **Potential Project**
+
+### _**Capstone Project**_
+I would like to use the NEON’s flux tower measurements and remotely sensed data to link the near on the ground phenology measurements to satellites measurements of phenology at different scales. Typically local measurements of phenology in remotely sensed studies such as those that use MODIS imagery to study phenology over vast areas lack phenological measurements at multiple scales. By using the flux tower phenological measurements along with other data such as topography, PAR, C02, and weather measurements e.g. temperature and precipitation. I hope to better understand freeze-thaw cycles, the start of the growing season, peak of season, end of growing season and to identify spatial and temporal variations in phenology at different scales to understand climate change. 
+ 
+#### **Week 3 Activity**
+This week's acivity will be using NEON Teak Lidar data to import, plot and create histograms of the lidar CHM and DSM.   
+
+Reading in data
+
+```{r setup-read-data,warning=FALSE, message=FALSE}
+   library(rgdal)
+   library(raster)
+
+   # set working directory to ensure R can find the file we wish to import
+   setwd("C:/Users/Jeffrey Stephins/Documents/data/NEONDI-2016/")
+```
+Load Raster
+
+```{r load-dsm-raster, warning=FALSE, message=FALSE}
+   # import dsm
+   teak_dsm <- raster("C:/Users/Jeffrey Stephins/Documents/data/NEONDI-2016/NEONdata/D17-California/TEAK/2013/lidar/TEAK_lidarDSM.tif")
+ ```
+Plot Lidar to create DSM
+ 
+```{r plot-dsm, warning=FALSE, message=FALSE}
+   #plot dsm and creates a histogram of Digital Surface Model (dsm)
+   plot (teak_dsm, col = terrain.colors(8), main= "Digital Surface Model")  
+   #create histogram of dsm
+   hist(teak_dsm)
+ ```
+
+ 
+ Load Canopy Height Model(CHM)
+ 
+```{r load-chm, warning=FALSE, message=FALSE}
+   #import chm 
+   teak_chm <- raster("C:/Users/Jeffrey Stephins/Documents/data/NEONDI-2016/NEONdata/D17-California/TEAK/2013/lidar/TEAK_lidarCHM.tif")
+   #plots chm
+   plot (teak_chm, col = heat.colors(3), main= "Canopy Height Model")
+   #creates a histogram
+   hist(teak_chm)
+ ```
+
+ 
