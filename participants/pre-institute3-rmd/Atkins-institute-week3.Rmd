@@ -1,0 +1,87 @@
+---
+title: "Plotting NEON LiDAR Data"
+author: "Jeff Atkins"
+date: "June 13, 2016"
+output: html_document
+---
+
+
+## Jeff Atkins
+
+I am a post-doc at Virginia Commonwealth University working in Chris Gough's lab where I am focusing on using portable canopy LiDAR in conjunction with NEON site data to answer the question of whether canopy structural complexity predicts net primary productivity across the continental United States. Through this course I hope to broaden my skills in using large datasets and collaborative software.
+
+## Capstone Project
+
+Connecting ground-based measurements to remotely sensed data products offers a powerful opportunity for scientists. I would like to explore relating ground based measures of canopy structural complexity and light use efficiency, to remotely sensed data gathered at NEON sites, with a focus on the Southeast (D03--possibly TALL or OSBS) as there are pre-existing AOP data for these areas that coincide with our collected data. I will focus on 
+
+The AOP data, likely the waveform LiDAR or hyperspectral, may be most useful to compare to our LiDAR data. Challenges would include coverage at the particular sites necessary to coincide with our data. 
+***
+## Week Three Assignment
+
+First, we load the required packages and set the working directory.
+
+```{r setup-read-data, message=FALSE}
+library(rgdal)
+library(raster)
+
+```
+Now that the packages are loaded, let's bring in the first raster layer, the digital surface model (DSM) from Lower Teakettle, a NEON relocatable site in California.
+```{r load-dsm-raster}
+
+# import dsm
+teak_dsm <- raster("NEONdata/D17-California/TEAK/2013/lidar/TEAK_lidarDSM.tif")
+
+```
+Now we want to plot the raster.
+
+```{r plot-dsm-raster, message=FALSE}
+
+# plot dsm
+breaks= seq(0,1, by = 0.01)
+nb = length(breaks)-1
+plot(teak_dsm, col=rev(terrain.colors(nb, alpha=1)), main='Lower Teakettle DSM')
+hist(teak_dsm, main="Lower Teakettle DSM histogram")
+```
+
+Next we are going to bring in the digital terrain model (DTM) and plot it.
+```{r load-dtm-raster, message=FALSE}
+
+# import dtm
+teak_dtm <- raster("NEONdata/D17-California/TEAK/2013/lidar/TEAK_lidarDTM.tif")
+
+```
+```{r plot-dtm-raster, message=FALSE}
+
+# plot dtm
+
+plot(teak_dtm, col=rev(terrain.colors(nb, alpha=1)), main='Lower Teakettle DTM')
+hist(teak_dtm, main="Lower Teakettle DTM histogram")
+```
+
+Now, let's look compare the canopy height as measured by LiDAR (imported from NEON raster data)
+
+```{r canopy-raster, message=FALSE}
+
+# create canopy layer
+teak_canopy <- teak_dsm - teak_dtm
+teak_CHM <- raster("NEONdata/D17-California/TEAK/2013/lidar/TEAK_lidarCHM.tif")
+#plots canopy layer
+plot(teak_canopy, col=rev(terrain.colors(nb, alpha=1)), main='Calculated Lower Teakettle Canopy Height (m)')
+plot(teak_CHM, col=rev(terrain.colors(nb, alpha=1)), main='Measured Lower Teakettle Canopy Height (m)')
+hist(teak_canopy, main="Calculated Canopy Height (m)")
+hist(teak_CHM, main="Measured Canopy Height (m)")
+
+length(teak_canopy)
+length(teak_CHM)
+
+max(teak_canopy)
+max(teak_CHM)
+```
+
+##Summary
+
+Subtracting the terrain layer from the surface layer to yield a calculated canopy layer that disagrees slightly with the LiDAR measured canopy height layer. The total returns are the same, but max values differ slightly as can be seen in the output diagnostics. Ecologiocally, it is interesting that canopy height increases, or rather, large trees emerge as elevation increases--likely due to precipitation gradients--though admittedly my knowledge of this area is limited. 
+
+
+
+
