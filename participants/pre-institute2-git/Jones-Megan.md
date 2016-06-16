@@ -1,6 +1,6 @@
 ## Megan A. Jones
 
-Hi, I am a facilitator of the **2016 NEON Data Institute**. I am both a 
+Hello, I am a facilitator of the **2016 NEON Data Institute**. I am both a 
 scientist, with a background in evolutionary behavioral ecology, and a science 
 educator. 
 
