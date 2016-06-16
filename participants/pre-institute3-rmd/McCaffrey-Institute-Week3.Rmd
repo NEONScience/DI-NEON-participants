@@ -1,0 +1,87 @@
+---
+title: "Bio, Propject Proposal, and Week 3 Assignment"
+author: "Dave McCaffrey"
+date: "June 13, 2016"
+output: html_document
+---
+
+**Home Base**: University of Lethbridge, Alberta, Canada
+
+**Interests**:
+Years ago, my initial research interests were in behavioral ecology. Eventually I *migrated* into the world of remote sensing and hydrology. 
+
+**Goal for Course**:
+THIS! Versioning and documenting scripts! I have cringe-worthy folders full multiple script edits. No more!
+
+### About My Project:
+A project on mosquito habitat and disease transmission could make good use of NEON's diverse datasets. I am currently working on a project which classifies prairie wetlands using synthetic apperature radar and airborne lidar, but there 
+is a big push on for hyperspectral wetland classfication. I would be curious to try with NEON's AOP data. Addtionaly,
+the mosquito pathogen status data (only saw for D03 on quick inspection), and ecohydrology data would be useful. 
+
+### Week 3 Activity:
+
+The following is a quick demonstration of R markdown files.
+
+First, we load the nessecary libraries, and set the working directory where our data are located.
+
+**NOTE:** In the following code, echo = FALSE should prevent the code chunk from being displayed.
+
+```{r setup-read-data, echo = FALSE}
+   library(rgdal)
+   library(raster)
+
+   # set working directory to ensure R can find the file we wish to import
+   setwd("~/Data/NEONDI-2016/NEONDI2016TEAK")
+
+```
+
+Next, we assign the .tif file containg the digital surface model, and plot. A digital surface model is a way of depicting rasterized lidar data, where each pixel represents the highest point value for that area, regardless of classificaiton.
+
+**NOTE:** The X and Y values in this plot are UTM coordinates, and elevation is reported in meters.
+
+```{r load-dsm-raster, echo = FALSE}
+
+   # import dsm
+   teak_dsm <- raster("NEONdata/D17-California/TEAK/2013/lidar/TEAK_lidarDSM.tif")
+   
+```
+
+```{r plot-dsm-raster, echo = FALSE}
+   # plot teak dsm
+   plot(teak_dsm, col = topo.colors(20, alpha = 1), main = "Topographic Map of Lower Teakettel")
+```
+
+A histogram of the elevation values from our DSM shows that the majority of elevation values are between 2300 and 2350 meters. The data are left skewed, with more pixels in the DSM having elevations < 2300 than >2350. 
+
+```{r hist-dsm, echo = FALSE}
+     hist(teak_dsm,
+     breaks=5,
+     main="Histogram Digital Surface Model\n Lower Teakettle",
+     col="Blue",  # changes bin color
+     xlab= "Elevation (m)")  # label the x-axis
+```
+
+The process can be repeated to view a canopy height model of the data.
+**NOTE:** A canopy height model represents the heighest value above ground surface in a given cell. 
+```{r load-chm-raster, echo = FALSE }
+
+   # import chm
+   teak_chm <- raster("NEONdata/D17-California/TEAK/2013/lidar/TEAK_lidarCHM.tif")
+   
+```
+
+Plotting the CHM suggests that the vast majority of this area is unvegetated, and contains only surface features. The few areas that are not surface features have very high elevations (~50m). These could be isolated trees, infrature such as phone towers, or artefacts in the data, such as birds in flight during the lidar observation. 
+
+```{r plot-chm-raster, echo = FALSE}
+   # plot teak chm
+   plot(teak_chm, col = rainbow(3, s = 1, v = 1, start = 0, end = max(1, 3 - 1)/3, alpha = 1), main = "Canopy Height Model of Teakettel")
+```
+
+This histogram of this CHM confirms the dominance of ground classificaiton. 
+```{r hist-chm, echo = FALSE}
+     hist(teak_chm,
+     breaks=25,
+     main="Histogram Canopy Height Model\n Lower Teakettle",
+     col="Blue",  # changes bin color
+     xlab= "Elevation (m)")  # label the x-axis
+```
