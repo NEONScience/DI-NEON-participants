@@ -1,0 +1,166 @@
+---
+title: "Explore NEON LiDAR Data"
+author: "Kristin Braziunas"
+date: "June 15, 2016"
+output: html_document
+---
+
+# About My Project
+
+### Bio
+
+I am an incoming MS/PhD Student (starting this fall) studying landscape ecology at the 
+University of Wisconsin–Madison (Dept of Zoology), where I started working in January 2016 
+as a Research Specialist in Forest Simulation Modeling. Over the course of my graduate 
+studies, I hope to contribute to research on the impacts of changing climate and fire 
+regimes on forest ecosystems, as well as how these impacts might change the way we 
+approach forest and fire management. I am particularly interested in using multiple 
+computational models and quantitative analyses to simulate forest development under novel 
+environmental conditions at different spatial and temporal scales. Currently, I am 
+parameterizing and testing the process-based model iLand for subalpine conifer forests in 
+Yellowstone.
+
+### Goals
+
+* Learn more about the data that NEON will collect and disseminate
+* Use remote sensing data to characterize forest structure and composition
+* Refine existing and develop new skills in coding and data analysis
+
+### Capstone Project
+
+**Question: How well does remote sensing data represent forest structure and composition 
+for initialization of a forest landscape simulation model?**
+
+Distance-dependent, individual-tree, process-based forest landscape simulation models are 
+needed to simulate potential forest growth and structure trajectories in a future 
+characterized by novel environmental drivers (e.g. changing climate, disturbance frequency 
+and severity). These models require detailed initialization files including information on 
+forest structure, species composition, and individual tree characteristics. Collecting 
+field data for model initialization is labor intensive at the plot scale, and unrealistic 
+at the landscape scale. However, remote sensing of forest structure and species 
+composition can potentially provide accurate and complete data at the landscape scale. I 
+will first derive forest structure and species composition from remote sensing data and
+compare it to stands in the same geographic region from the Forest Inventory and Analysis
+(FIA) Program. For example, I could look at dominant tree heights, canopy cover, and 
+percent species composition.
+
+Time permitting, I will then derive individual tree characteristics (e.g. DBH, height)  
+from remote sensing data for comparison with FIA stands. The long-term goal of this 
+exercise is to use remote sensing data to create initialization files for 
+the process-based model iLand, which requires the following information on individual 
+trees and saplings: species, density, DBH, height, and age. When available, soil, climate, 
+and atmospheric data (e.g. nutrient content in soils, CO2 concentration) will also be used 
+for model initialization. 
+
+Data needed:
+* LiDAR (vegetation structure, heterogeneity, topography) 
+* Hyperspectral (vegetation cover, species composition) 
+* FIA data (condition, plot, and tree tables)
+
+Data availability: Remote sensing data is available for sites in D01 (Northeast) and D03 
+(Southeast). FIA data is available for all states via the FIA DataMart except Hawaii.
+
+***
+
+# Week 3 Activity
+
+For this activity, I am exploring NEON LiDAR data available for Lower Teakettle, a 
+relocatable terrestrial field site in NEON Domain 17 (Pacific Southwest). [Learn more
+about the Lower Teakettle field
+site.](http://www.neonscience.org/science-design/field-sites/lower-teakettle)
+
+I will be specifically looking at the Digital Surface Model (DSM) output on site elevation and the Canopy Height Model (CHM) output on vegetation heights.
+
+First, I'm going to set up my working directory.
+
+```{r setup-read-data, message=FALSE}
+library(rgdal)
+library(raster)
+
+# set working directory
+setwd("~/Documents/Data/NEONDI-2016/")
+
+```
+
+And then load the Teakettle Digital Surface Model data.
+
+```{r load-dsm-raster}
+
+# import dsm
+teak_dsm <- raster("NEONdata/D17-California/TEAK/2013/lidar/TEAK_lidarDSM.tif")
+
+```
+
+Initial plot of Teakettle DSM.
+
+```{r plot-dsm-raster, echo=FALSE}
+
+# plot dsm
+plot(teak_dsm, main=" Digital Surface Model (DSM) \n NEON Lower Teakettle Site ",
+     col=rainbow(10))
+
+```
+
+Now, I'll import the Teakettle Canopy Height Model raster.
+
+```{r load-chm-raster}
+
+# import chm
+teak_chm <- raster("NEONdata/D17-California/TEAK/2013/lidar/TEAK_lidarCHM.tif")
+
+```
+
+Initial plot of Teakettle CHM.
+
+```{r plot-chm-raster}
+
+# plot chm
+plot(teak_chm, main=" Canopy Height Model (CHM) \n NEON Lower Teakettle Site ")
+
+```
+
+From the DSM plot and histogram, it appears that this site is mostly sloped with a taller peak near the northwest corner of the site and also a point of slightly higher elevation in the southeast. From the CHM plot, it appears that the site does not have a lot of vegetation.
+
+Plot histograms of Teakettle DSM and CHM.
+
+```{r plot-hist-dsm-chm, warning=FALSE}
+
+# histogram of dsm
+hist(teak_dsm, main=" DSM Elevation Frequency \n NEON Lower Teakettle Site ",
+     breaks=10, col="darkkhaki", xlim=c(2150,2400), ylim=c(0,30000),
+     xlab="Elevation (m)")
+
+# histogram of chm
+hist(teak_chm, main=" CHM Height Frequency \n NEON Lower Teakettle Site ", 
+     col="forestgreen", axes=FALSE, xlab="Height (m)", ylab="Frequency (thousands)",
+     xlim=c(0,60))
+
+# change y axis to thousands, keep x axis same
+axis(2, at=axTicks(2), labels=paste(axTicks(2)/1000))
+axis(1, at=axTicks(1), labels=paste(axTicks(1)))
+
+```
+
+The CHM histogram is not very interesting - it looks like it is only capturing the frequency when height equals 0. I'll try modifying the CHM raster to eliminate values equal to 0 to see if I can plot the frequencies of vegetation heights that are present.
+
+```{r modify-chm-hist, warning=FALSE}
+
+# modify chm raster so only values >0
+summary(teak_chm)
+teak_chm.mod <- teak_chm
+teak_chm.mod[teak_chm.mod == 0] <- NA
+summary(teak_chm.mod)
+
+# histogram of modified chm
+hist(teak_chm.mod, main=" CHM Height Frequency \n NEON Lower Teakettle Site ", breaks=5,
+     col="forestgreen", axes=FALSE, xlab="Height (m)", ylab="Frequency",
+     xlim=c(0,60), ylim=c(0,100))
+
+# change y axis to thousands, keep x axis same
+axis(2, at=axTicks(2), labels=paste(axTicks(2)))
+axis(1, at=axTicks(1), labels=paste(axTicks(1)))
+
+```
+
+From the summary and the histogram, it looks like the vegetation that is present only
+within 50-56m in height, with a median height of 51.14m.
