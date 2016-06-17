@@ -1,0 +1,49 @@
+---
+title: "NEON Exercise 3"
+author: "Holly Andrews"
+date: "June 16, 2016"
+output: html_document
+---
+
+Bio:
+
+I am a graduate student at the University of California - Riverside in Darrel Jenerette's lab.  My broad interests are in landscape and ecosystem ecology.  My dissertation will explore how plant invasions / ecosystem type conversion impact microclimate and biogeochemical processes.  My main goal for this course is to learn how to use big data effectively to answer ecologically-relevant questions.
+
+Capstone Project:
+
+Plants are able to manipulate local temperature conditions through shade, evapotranspiration, and other mechanisms.  However, all plants are not equal in the ways that they do this; trees are much better at cooling understory than grasses are.  Even within trees, some species are more efficient that others depending on their abilities to gain access to water and other nutrients. I plan to explore how different plant functional types regulate land surface temperature.  I hypothesize that smaller, herbaceous plants will be less efficient at cooling the land surface than will large, woody plants due to large functional differences between them.
+
+To test my hypothesis, I will be using mostly data from the airborne missions, including vegetation cover and structure data, including NDVI and EVI.  I will also use heat flux plate, soil moisture, eddy-covariance tower and soil temperature data to quantify surface temperatures.
+
+\section{Exercise 3:  Opening and plotting raster files} 
+
+\subsection {Open files}
+```{r}
+library(raster)
+library(sp)
+library(rgdal)
+setwd("C:/Users/Holly/Documents/data/NEONDI-2016/NEONdata/D17-California/TEAK/2013/lidar")
+slope <- raster("TEAK_lidarSlope.tif")
+dsm <- raster("TEAK_lidarDSM.tif")
+```
+
+This beginning step allows me to call all libraries needed for this analysis, set my working directory, and open the files within the directory that I will be working with for my analysis.
+
+\vskip0.2in
+\subsection{Plot slope and DSM}
+
+```{r}
+plot(slope, main="Slope",xlab="x",ylab="y")
+plot(dsm, main="DSM",xlab="x",ylab="y")
+```
+
+The DSM plot clearly delineates trees and canopy from vegetation closer to the ground, highlighted as sprinklings of bright green.  These dots of green seem to occur on flat or shallowly-sloped areas, as can be seen when the DSM plot is compared to the slope plot.
+
+\vskip0.2in
+\subsection{Generate histograms of slope and DSM}
+```{r}
+hist(slope, main="Slope",xlab="Slope (degrees)")
+hist(dsm, main="DSM",xlab="Elevation")
+```
+
+These histograms characterize the landscape of the study area. the vast majority of the land is shallowly sloped or flat, with very few steep places.  Meanwhile, the DSM histogram indicates that most of the landscape is between 2250 and 2350 feet in elevation. 
