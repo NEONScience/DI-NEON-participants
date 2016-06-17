@@ -14,7 +14,7 @@ library(rgdal)
 library(raster)
 
 # set working directory to ensure R can find the file we wish to import
-setwd("~/Documents/data/data-institute-2016/")
+setwd("~/Documents/data/NEONDI-2016/")
 
 ```
 
@@ -22,7 +22,7 @@ Loading the DSM GeoTIFF for Lower Teakettle
 
 ```{r load-dsm-raster}
 # import dsm
-teak_dsm <- raster("NEONdata/D17-California/TEAK/2013/lidar/Teak_lidarDSM.tif")
+teak_dsm <- raster("NEONdata/D17-California/TEAK/2013/lidar/TEAK_lidarDSM.tif")
 ```
 
 Plot the DSM and add a title
@@ -36,7 +36,7 @@ Load and plot TEAK CHM.
 
 ```{r load-plot-chm}
 # load data
-teak_chm <- raster("NEONdata/D17-California/TEAK/2013/lidar/Teak_lidarCHM.tif")
+teak_chm <- raster("NEONdata/D17-California/TEAK/2013/lidar/TEAK_lidarCHM.tif")
 
 # plot raster
 plot(teak_chm, main="Canopy Height Model\nNEON Lower Teakettle Field Site")

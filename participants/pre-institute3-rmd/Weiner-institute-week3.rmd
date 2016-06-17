@@ -1,0 +1,79 @@
+---
+title: "Explore NEON LiDAR Data"
+author: "Jon Weiner"
+output: html_document
+---
+
+My name is Jon Weiner and I'm a PhD student at the University of Nevada, Reno studying snow hydrology.
+I'm interested in studying the interactions between snowpack and vegetation utilizing remote sensing tools such as Light Detection and Ranging (LiDAR).
+My goal for this course is to learn how to use R and process remote sensing data.
+
+
+##### About My Project
+
+Snowpack is one of the primary sources of water in the Western United States. Its abundance and distribution is moderated by vegetation, which can be measured at high resolutions using remote sensing tools such as LiDAR.
+
+I propose to use LiDAR to study the leaf area index (LAI) or canopy coverage at different elevations with the goal of informing snow accumulation in those areas that have snowfall. I would use LiDAR datasets from Domain 17 from 2013 to do this analysis.
+
+
+#### Week 3 Activity: Plotting LiDAR data from the NEON Teakettle site with practice in R Markdown.
+
+```{r setup-read-data, include=FALSE}
+    library(rgdal)
+    library(raster)
+
+    #set workind directory to ensure R can find the file we wish to import
+    setwd("~/Documents/data/NEONDI-2016/")
+```    
+
+
+##### Loading Teakettle LiDAR DSM
+
+```{r load-dsm-raster}
+
+    #import dsm
+    teak_dsm <- raster("NEONDI2016TEAK/NEONdata/D17-California/TEAK/2013/lidar/TEAK_lidarDSM.tif")
+
+```
+
+
+##### Teakettle LiDAR DSM
+
+```{r plot-TEAK-DSM}
+    #plot overview
+    plot(teak_dsm, main = 'NEON Teakettle LiDAR DSM Sample', col = terrain.colors(20))
+```
+
+
+##### Histogram of Teakettle LiDAR DSM
+
+```{r hist-TEAK-DSM}
+    #plot histogram of DSM
+    hist(teak_dsm, breaks = 10, main = 'Histogram of Teakettle LiDAR DSM', col = 'gold1', xlab = 'Elevation (m)')
+
+```
+
+
+##### Teakettle LiDAR CHM
+
+```{r plot-TEAK-CHM}
+    #plot CHM
+    plot(raster("NEONDI2016TEAK/NEONdata/D17-California/TEAK/2013/lidar/TEAK_lidarCHM.tif"), main = 'NEON Teakettle LiDAR CHM Sample', breaks = c(seq(0,60,by=3)), col=terrain.colors(20))
+
+```
+
+_It's interesting that there are only a few specks of stuff and all at around 55m. Maybe this is the top of a bare area with only a few tall conifers?_
+
+
+##### Histogram of Teakettle LiDAR CHM
+
+```{r hist-TEAK-CHM}
+    #plot histogram of CHM
+    hist(log(raster("NEONDI2016TEAK/NEONdata/D17-California/TEAK/2013/lidar/TEAK_lidarCHM.tif")), col = 'gold1', breaks = 10, xlab = "Log-Elevation (m)", ylab = "Log-Frequency")
+    
+```
+
+_I put the histogram into a log-log scale so as to see any variation. The elevation variance was between 3.9 and 4.05, so with e^4 ~= 55 m, so it's only showing the trees, or at least whatever 32% of the total captures of the trees._
+
+
+
