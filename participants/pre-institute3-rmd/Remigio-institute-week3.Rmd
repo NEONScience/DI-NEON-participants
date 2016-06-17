@@ -1,0 +1,128 @@
+---
+title: "Explore NEON LiDAR Data"
+author: "R. Remigio"
+date: "June 16, 2016"
+output: html_document
+---
+
+
+# Remigio Bio and Research Interests:
+
+I'm Richard, I also go by Rich, and a current PhD student at Columbia University’s School of Public Health studying environmental health sciences. Prior to starting my doctoral studies, I worked as an environmental engineer for the US Environmental Protection Agency (USEPA) working broadly on water quality protection at the national scale. My research interests relates to characterizing the impacts of observed extreme weather events, like heat, on vulnerable populations. I am also interested in understanding the ecologic role of improved land cover and physical infrastructure design in influencing population health. I’m pretty *green* to remote sensing and interested in characterizing surface temperatures and land cover as explanatory factors in epidemiological models. I have a general background in biostatistics and GIS/spatial analyses. My goal is to learn to harness geospatial data, like remote sensing and LiDAR, into epidemiological models to predict health impacts caused by climate and land cover changes in urban and peri-urban regions.
+
+---
+
+## About My Proposed Project:
+
+*Applying an eco-epidemiological framework to determine the role of land cover and temperature on ecosystem health at selected NEON eco-region study sites*
+
+An overarching interest for a project is in understanding the role of land cover and land cover changes in regulating heat fluxes. Ultimately, estimating its effect on surface and air temperature in selected regions. Prior studies have considered and observed the phenomena of urban heat island effects in peri-urban and urban regions. These land cover types has undergone dramatic land cover change especially with increased imperviousness and reduction of contiguous green spaces. It would be interesting to determine the extent of land cover changes in the natural environment and also determine whether similar phenomena of heat island effects, or microclimate formation, can occur. If any should exist, is it possible to identify mechanistic markers of microclimate heat islands and characterize its mechanistic effect on ecosystem health markers in selected eco-regions?
+By using an eco-epidemiological framework, we could consider a hierarchical modeling approach to take advantage of measurements taken at site-specific locations over time (e.g. longitudinal study design, continuous and repeated measurements). This is a great opportunity to determine causality by taking advantage of both in-situ and remote sensing data that represent changes in temperature, due to changes in land cover heterogeneity, and determine its impacts on the natural environment.  A major exercise that I’d like to learn and to apply is to operationalize environmental data collected by remote sensing for epidemiological models.
+
+A potential proposal is to characterize land cover and temperature at selected eco-regions that could represent varying levels of vulnerability due to climate change (e.g. Mid-Atlantic, Northeast, Tanga, etc. might be considered highly vulnerable eco-regions of interest). There are varying epidemiological designs that can be applied and tested. For example, time series analysis if we choose to look at year-round temperature data and its relationship to changes or shifts in land cover, and ultimately on ecosystem health. Or using case-crossover to study pre-defined heat-wave events and matching non-heat wave events in relationship to land cover and ecosystem health.  Given the enormity of the data universe, biogeochemical processes are not being addressed however will likely be a crucial theme and a critical need for workshop peer collaborators.
+
+---
+
+### Applicable NEON Data Sources
+
+* Flux tower measurements
+* Airborne remote sensing
+
+#### Relevant environmental markers of interest
+
+*Land cover*
+
+* NDVI/EVI
+* Topography
+
+*Soil Measurements*
+
+* Heat flux
+* Soil temperature
+
+*Microclimate*
+
+* Surface temperature
+* Air Temperature
+* Biological temperature
+* Relative Humidity
+
+*Ecosystem Health*
+
+* Community composition and diversity
+* Species abundance and density
+* Pathogens
+
+---
+
+##### Week 3 Activity
+
+In this page, this page will showcase the NEON Lower Teakettle LiDAR data products through R. Following will be code and outputs used to process and characterize the data. 
+
+Here goes nothing: 
+---
+
+```{r intro-option, eval=FALSE}
+
+# the code here will not be processed by R 
+# but it will appear on your output document
+1+2
+
+```
+
+
+
+**Import & Plot DSM Lower TEAK:**
+
+```{r-raster-load-plot-dsm}
+library(rgdal)
+library(raster)
+
+# set working directory to ensure R can find the file we wish to import
+   setwd("~/Documents/data/NEONDI2016TEAK/")
+
+# import dsm
+   teak_dsm <- raster("NEONdata/D17-California/TEAK/2013/lidar/TEAK_lidarDSM.tif")
+ 
+#plot dsm
+  plot(teak_dsm,
+     main="Digital Surface Model\nNEON Lower Teakettle Field Site")
+
+```
+
+
+**Import and Plot CHM Lower TEAK raster:** 
+
+```{r-load-data -TEAK-CHM}
+# set working directory to ensure R can find the file we wish to import
+   setwd("~/Documents/data/NEONDI2016TEAK/")
+
+# import chm
+   teak_chm <- raster("NEONdata/D17-California/TEAK/2013/lidar/TEAK_lidarCHM.tif")
+
+# plot chm
+plot(teak_chm,
+     main="Canopy Height Model\nNEON Lower Teakettle Field Site")
+```
+
+**Histograms for Lower Teak DSM & CHM Rasters**
+
+Note that CHM raster contain sparse data at high frequency. Be sure to log-transform
+frequency and to adjust x-axis range. I used 3.85 as my lower bound and 4.1 as my upper.
+
+You will note that DSM is slightly skewed to the left and indicates higher elvation. CHM indicates a very tight range in tree canopy height. 
+
+```{r, echo=FALSE}
+hist(teak_dsm,
+     main="Histogram Digital Surface Model\n NEON Lower Teakettle Field Site",
+     col="wheat3",  # changes bin color
+     xlab= "Elevation (m)")  # label the x-axis
+
+hist(log(teak_chm),
+     main="Log-Transformed Histogram Canopy Height Model \n NEON Lower Teakettle Field Site",
+     xlim=c(3.85,4.1), ylab="log(Freq)",
+     col="green",  # changes bin color
+     xlab= "Elevation (m)")  # label the x-axis
+
+```
+
