@@ -1,0 +1,77 @@
+---
+title: "Explore NEON LiDAR Data"
+author: "Nate Looker"
+date: "June 16, 2016"
+output: html_document
+---
+
+## Biography
+Originally from Des  Moines, Iowa, I'm currently finishing my first year as a Ph.D. student in Land and Atmospheric Science at the University of Minnesota. My dissertation research addresses how land use and landform interact to influence soil hydrologic functioning in the volcanic highlands of eastern Mexico. I received a master's degree in Ecology from Montana State University in Bozeman, where I studied conifer ecophysiology. When not conducting fieldwork in montane environments, I spend as much time as possible getting lost in them, be it skiing, running, or bushwhacking. I'd prefer to have my code not be as chaotic as my recreational activities, though, so I'm looking forward to learning reproducible approaches to data management and analysis at NEON this summer.
+
+***
+## About My Project
+
+Vegetation structure often reflects long-term hydrologic conditions and, in turn, influences the partitioning of rainfall into vertical (evapotranspiration and infiltration) and lateral fluxes. Terrain complexity may interact with climatic conditions to accentuate these ecohydrologic feedbacks. General features of these relationships may be characterized as simple functions of remotely sensed vegetation and terrain attributes (e.g., the Hydrologic Vegetation Gradient, *sensu* Hwang et al. 2012, WRR). Using NDVI and EVI and the digital terrain and canopy height models from NEON AOP flights, as well as ground-based data on vegetation structure and coarser resolution digital elevation models (e.g., USGS products), I propose an analysis of the interplay between physiography and vegetation across local and continental gradients of water availability. Of the sites that currently have AOP data, I will select woodland-dominated locations across a range of precipitation/potential evapotranspiration (which I will calculate with field data, as available): the D17 sites in central California, the Great Smokey Mountains National Park relocatable site in Tennessee and North Carolina, and the D03 sites in Florida. The general workflow I intend to follow involves calculating terrain indices using a digital terrain model for each site and then assessing relationships between NDVI and terrain attributes at multiple scales of spatial aggregation (e.g., expanding the neighborhood for which terrain indices are calculated or averaging index values across process domains of increasing size, such as nested watersheds).
+
+***
+## Week 3 Activity
+
+As an initial exercise with R Markdown, we will read in, visualize, and summarize LiDAR data products (canopy height, digital terrain, and digital surface models) from the Teakettle NEON site.
+
+```{r setup-read-data}
+   library(rgdal)
+   library(raster)
+
+   # set working directory to ensure R can find the file we wish to import
+   setwd("~/Documents/data/NEONDI-2016/")
+```
+ 
+Read in LiDAR-based digital surface model of Teakettle site.
+```{r load-dsm-raster }
+   # import dsm
+   teak_dsm <- raster("~/Documents/data/NEONDI-2016/NEONdata/D17-California/TEAK/2013/lidar/TEAK_lidarDSM.tif")
+   
+```
+
+Visualize DSM.
+
+```{r plot-dsm-raster, echo=F}
+ plot(teak_dsm, main="Digital surface model of Teakettle site")
+```
+
+```{r dsm-histogram}
+hist(values(teak_dsm), main="Histogram of DSM elevations")
+```
+ 
+Read in digital terrain model.
+```{r load-dtm-raster }
+
+   # import dtm
+   teak_dtm <- raster("~/Documents/data/NEONDI-2016/NEONdata/D17-California/TEAK/2013/lidar/TEAK_lidarDTM.tif")
+   
+```
+
+Visualize DTM and plot histogram.
+
+```{r plot-dtm-raster, echo=F}
+ plot(teak_dtm, main="Digital terrain model of Teakettle site")
+```
+
+```{r dtm-histogram}
+hist(values(teak_dtm), main="Histogram of DTM elevations")
+```
+
+Canopy height model only includes values of zero (data not shown). As an alternative approximation of the CHM, let's assess the differences between the digital surface model and the digital terrain model. 
+
+```{r elev-diff-histogram}
+#Calculate differences between DSM and DTM.
+nonzero_diff <- values(teak_dsm) - values(teak_dtm)
+#Subset vector of differences to nonzero values.
+nonzero_diff <- nonzero_diff[nonzero_diff>0]
+#Plot histogram of differences.
+hist(nonzero_diff, main="Histogram of differences between DSM and DTM")
+summary(nonzero_diff)
+```
+
+## Conclusion
+Visualization of the histograms and spatial plots of the digital surface model and digital terrain model of the Teakettle site reveals patterns that are consistent for the two types of model. The histograms indicate slightly left-skewed distributions, and the spatial plots depict landscapes that share fundamentally the same features (e.g., terrain features dominate the surface of the site). The histogram of the differences in elevation between the two models (DSM - DTM) suggests a right-skewed distribution for non-terrain surface features, with a median height of 5.37 meters and a maximum height of 54.66 meters.
