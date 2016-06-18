@@ -8,9 +8,9 @@ output: html_document
 
 ***
 
-#Robert Paul
-##University of Illinois at Urbana-Champaign
-###Department of Plant Biology
+# Robert Paul
+## University of Illinois at Urbana-Champaign
+### Department of Plant Biology
 
 ***
 
@@ -25,7 +25,7 @@ My *learning goals* for the NEON Institute are...
 
 ***
 
-##Capstone Project
+## Capstone Project
 
 My *current project* involves identifying and describing, through both observations and modeling, areas affected by intermittent flooding events. I would like to use the course to develop a robust, reproducible workflow to identify areas across a landscape where ponding and flooding events have occurred or are likely to occur after intense precipitation. Some of the data I expect to be useful are:
 
@@ -36,7 +36,7 @@ My *current project* involves identifying and describing, through both observati
 
 ***
 
-Some Raster Data Sets
+## Some Raster Data Sets
 
 ```{r setup-read-data, warning=FALSE}
 # Load libraries we'll need for LiDAR DTM/DSMs
@@ -60,7 +60,7 @@ setwd(dataPath)
 opts_knit$set(root.dir=dataPath)
 ```
 
-Embedded Plots:
+### Embedded Plots:
 
 ```{r, load-dsm-raster}
 # Get the surface raster for TEAK
@@ -92,4 +92,4 @@ hist(teak_dsm, main="Lower Tea Kettle DSM Pixel Value Distribution", col=heat.co
 hist(teak_chm, main="Lower Tea Kettle Tree Height Pixel Value Distribution", col=heat.colors(3))
 ```
 
-We can see from the tree height raster that trees are sparse at this site.
+**We can see from the tree height raster that trees are sparse at this site. **
