@@ -1,0 +1,95 @@
+---
+title: "Week 3 Markdown Tutorial"
+author: Cassondra Walker
+output: html_document
+---
+##Bio for Cassondra Walker
+
+I am a PhD candidate in the Department of Integrative Biology at Oklahoma State University.
+
+###Interests
+
+>I study how environmental conditions operate at different spatial scales (extent and grain) to constrain species distributions. I use remotely sensed data to quantify environmental conditions across differing spatial extents and resolutions.  I currently collect my own terrestrial LiDAR to quantify vertical structure at fine spatial scales. I am also interested in the scaling properties of LiDAR derived metrics; for example, how airborne collected point clouds can be modeled to terrestrial collected point clouds.
+
+###About My Proposed Capstone Project
+
+>My project idea is to model Leaf Area Index at large spatial extents at varying resolutions.  I would like to develop a procedure to model the relationship between Leaf Area Index and Normalized Difference Vegetation Index for the Great Plains (North, Central, and Southern Plains NEON Domains), where I conduct most of my research. Since LAI is not readily available at fine spatial resolutions, I would like to develop a procedure that will allow me to estimate LAI values from known NDVI values.  By using NDVI and LAI products from the NEON dataset, I can develop a model mathematically describing the relationship between these two vegetation indices.  I can then use this constructed model to derive LAI values from other NDVI datasets (i.e. Landsat).
+
+***
+***
+***
+
+## Week Three Tutorial-Working with LiDAR Data
+
+###Load R libraries
+
+```{r load libraries,messages=FALSE,warnings=FALSE,results='hide'}
+library(rgdal)
+library(raster)
+library(colorspace)
+```
+
+The libraries **rgdal** and **raster** are packages for working with raster data. The package **colorspace** allows for coloring options for the raster plots.
+
+###Set Working Directory
+
+```{r set working directory, messages=FALSE,warnings=FALSE,results='hide'}
+setwd("~/Documents/NEON")
+```
+
+
+###Load Lidar DSM file
+
+```{r load raster file, messages=FALSE,warnings=FALSE,results='hide'}
+teakdsm<-raster("~/Documents/NEON/Data/NEONDI2016TEAK/NEONdata/D17-California/TEAK/2013/lidar/TEAK_lidarDSM.tif")
+```
+
+A Digital Surface Model is a representation of the surface of a study region.  Heights are shown as elevations.
+
+###Plot the LiDAR Digital Surface Model
+
+```{r plot raster, messages=FALSE,warnings=FALSE,results='hide'}
+plot(teakdsm,
+     breaks=c(2150,2200,2250,2300,2350,2400),
+     col=topo.colors(5),
+     main="Digital Surface Model\nTeak Dam")
+```
+
+The Digital Surface Model shows that most of the surface heights in our study area range between 2150 - 2400 m above sea level.
+
+###Load LiDAR Canopy Height Model
+
+```{r load additinal raster, messages='FALSE',warnings='FALSE',results='hide'}
+teakchm<-raster("~/Documents/NEON/Data/NEONDI2016TEAK/NEONdata/D17-California/TEAK/2013/lidar/TEAK_lidarCHM.tif")
+```
+
+A Canopy Height Model shows the height of trees in the study areas.
+
+###Plot LiDAR Canopy Height Model
+
+```{r plot additional raster, messages=FALSE,warnings=FALSE,results='hide'}
+plot(teakchm,
+     breaks=c(0,5,10,15,20,25,30,35,40,45,50,55),
+     col=heat_hcl(12,c=c(80,30),l=c(30,90),power=c(1/5,1.5)),
+     main="Canopy Height Model\nTeak Dam")
+```
+
+From our canopy height model, we can see that the study area does not have many trees, just a few patches which are about 55 m high.
+
+###Create Histograms for both LiDAR datasets
+
+```{r create histograms, messages=FALSE,warnings=FALSE,results='hide'}
+DSMhist<-hist(teakdsm,
+              breaks=6,
+              main="Digital Surface Model\nTeak Dam",
+              col="slategray",
+              xlab="Elevation above sealevel (m)")
+
+CHMhist<-hist(teakchm,
+              breaks=12,
+              main="Canopy Height Model\nTeak Dam",
+              col="thistle4",
+              xlab="Height (m)")
+```
+
+Histograms of our raster data sets show us the number of pixels that fall within each of the height bins. From the Digital Surface Model histogram informs us that most of the area within the study extent fall within a thousand meter range (2250 - 2350 m). From the Canopy Height Model histogram shows us that most of the area is not covered in trees, and the few areas that do have trees have heights between 50 - 55 meters.  

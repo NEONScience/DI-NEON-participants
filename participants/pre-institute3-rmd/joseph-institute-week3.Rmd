@@ -1,0 +1,97 @@
+---
+title: "Week 3 assignment"
+output: html_document
+---
+
+## Max Joseph
+
+I am part of the Analytics Hub with Earth Lab and Research Computing at the University of Colorado Boulder.
+My background is in hierarchical Bayesian modeling and disease dynamics, but much of my current work involves writing scientific software to make data more useful.
+I am hoping to become more proficient with remotely sensed data by taking this course, so that I can more effectively integrate data from different sources.
+
+## Project summary
+
+Did fire history influence erosion in the 2013 Boulder floods? 
+Because fire destroys soil-stabilizing vegetation, it is possible that *all else being equal*, areas that had recently burned prior to the 2013 floods may have experienced more erosion.
+
+I propose to investigate the relationship between burn history and erosion using the 2013 pre and post flood NEON LiDAR data. 
+Boulder County provides shapefiles of historical fire boundaries, with information on fire age/time since ignition for 33 fires, spanning the years 1978 to 2012.
+We could investigate binning the landscape so that comparisons among areas are valid, for instance considering only regions with comparable aspect, slope, and hydrogeographic traits. 
+Eventually, we would like to compare the distributions of pixel-wise elevation changes for each area, mapping the distribution in some way to fire age (e.g., a plot with fire age on the x-axis and mean absolute change in elevation on the y-axis). 
+
+Alternatively, if the data are available, an even better approach would involve extracting vegetation data from the LiDAR data. 
+For instance, we specifically expect that large live trees would be particularly stabilizing. 
+If we could link the height of plants to the amount of elevation change due to erosion, all using the LiDAR data, then probably we would have a better resolved understanding of the soil-stabilizing effects of vegetation. 
+
+## Loading lidar rasters
+
+Let's see what files are available in the lidar folder.
+
+```{r list_files}
+library(raster)
+library(rasterVis)
+
+# what data are available?
+data_dir <- "~/Downloads/NEONDI2016TEAK/NEONdata/D17-California/TEAK/2013/lidar/"
+files <- list.files(data_dir)
+files
+```
+
+There are five tif files in the lidar folder. Let's load them as a list.
+
+```{r load_files}
+paths <- paste0(data_dir, files)
+r_list <- lapply(paths, raster)
+r_list
+```
+
+## Creating a raster stack
+
+Each raster in the list has the same projection, extent, and resolution.
+We can stack these rasters to make a RasterStack. 
+
+```{r make_stacks}
+r_stack <- stack(r_list)
+r_stack
+```
+
+## Plotting the rasters
+
+To plot these, I'll use some functions from RasterVis.
+
+```{r plot_stack}
+plot(r_stack)
+```
+
+How correlated are the values among the layers?
+
+```{r splom_stack}
+splom(r_stack)
+```
+
+How about a level plot?
+
+```{r terrible_levelplot}
+levelplot(r_stack)
+```
+
+Looks horrible, because all of the values among rasters are on different scales. 
+
+```{r bad_levelplot}
+levelplot(scale(r_stack))
+```
+
+Less horrible, but still bad because of outliers in the CHM (crown height) layer, which has a long right tail (a few pixels with very large crown height values). 
+
+## Generating raster histograms
+
+We can use the `hist` function, but I'll suppress warnings.
+
+```{r histograms, warning=FALSE}
+hist(r_stack)
+```
+
+## Discussion
+
+The `raster` package makes all of these operations fairly easy as long as everything has the same extent, projection, and resolution. 
+R markdown is nice because the documents are portable. 

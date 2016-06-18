@@ -1,0 +1,110 @@
+---
+title: "Explore NEON LiDAR Data"
+author: "Enrique Monta&ntilde;o"
+date: "June 16, 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Enrique Monta&ntilde;o, PhD
+
+## About Me
+
+I recently received my PhD from the **University of Maryland** in *Geographical Sciences* with an emphasis on remote sensing.  I am currently a postdoctoral researcher with the USGS in Reston, VA.  I love working on code and solving problems, so I'm excited about the workshop. I'm always looking for new ways to approach coding, and a workshop like **NEON** is a great opportunity to develop some new skills.
+
+Most of my graduate work involved coarse-scale imagers (**MODIS** and **VIIRS**).  I'm interested in learning skills for accessing and processing hyperspectral data for applications in identifying invasive species.  I'm also interested in learning techniques for using LiDAR data.
+
+
+# About My Project
+
+<!--## Capstone Project-->
+Monitoring invasive species in various ecosystems is an stated priority for **NEON**.
+
+Science questions:
+
+1. Is it possible to identify individual invasive tree (or other vegetation) species using data from AOP observations?  
+2. What combination of spectral bands offers separability?
+3. Does canopy structure from LiDAR add to the potential for identification?
+
+AOP hyperspectral data is a fundamental component to this research.  The narrow, high-spectral resolution bands, fine spatial resolution, and spatial footprint allow exploration of this question.  LiDAR is potentially additive for examining separability from canopy structure.  Site surveys and inventories provide information for validation and calibration of models where species of interest are known to occur.  Finally, the relationship between soil nutrient availability and species occurrence might offer some insight to the identification.
+
+I know this is too much for a workshop capstone project, but these are the questions driving the concept that I hope to work on while I'm in CO.
+
+# Week 3 Activity
+
+The next part of this document demonstrates using R to access and analyze **NEON LiDAR** data from the Teakettle site.
+
+```{r warning=FALSE}
+  library(rgdal)
+  library(raster)
+  
+  #set the working directory to the Teakettle data
+  #setwd(file.path("~","Projects","GitHub","DI16-NEON-participants","data","NEONDI2016TEAK"))
+  #NOTE: per discussion here:
+  #https://groups.google.com/forum/#!topic/knitr/knM0VWoexT0
+  #setting the working directory is incorrect and doesn't work.
+  #use root.dir instead
+  #this requires explict call to the knitr library
+  knitr::opts_knit$set(root.dir = file.path("~","Projects","GitHub","DI16-NEON-participants","data","NEONDI2016TEAK"))
+  #I like to use file.path() to construct files paths to be platform independent
+```
+
+Next load the LiDAR DSM raster
+
+```{r load-dsm-raster}
+  #import dsm
+  teak_dsm <- raster(file.path("NEONdata", "D17-California", "TEAK", "2013", "lidar", "TEAK_lidarDSM.tif"))
+```
+
+Plot the raster
+
+```{r plot-dsm-raster, warning=FALSE, message=FALSE}
+  #plot the raster,  I like to use ggplot2 and I'm exploring the rasterVis wrapper
+  library(ggplot2)
+  library(rasterVis)
+
+  gplot(teak_dsm) + #basic plot object from rasterVis
+    geom_tile(aes(fill = value)) + # add a tile object to fill the raster
+    coord_equal() + #equal area
+    ggtitle("Plot of Teakettle LiDAR DSM") + #add a title
+    ylab("Longitude (UTM)") + xlab("Latitude (UTM)") + #ad x/y labels
+    scale_fill_gradientn(colours = terrain.colors(10)) + #change the color scale
+    theme_bw() #change the base theme of the plot
+```
+
+Plot a second raster
+
+```{r plot-aspect-raster, message=FALSE}
+  #import the aspect raster
+  teak_aspect <- raster(file.path("NEONdata", "D17-California", "TEAK", "2013", "lidar", "TEAK_lidarAspect.tif"))
+
+  gplot(teak_aspect) + #basic plot object from rasterVis
+    geom_tile(aes(fill = value)) + # add a tile object to fill the raster
+    coord_equal() + #equal area
+    ggtitle("Plot of Teakettle LiDAR Aspect") + #add a title
+    ylab("Longitude (UTM)") + xlab("Latitude (UTM)") + #ad x/y labels
+    scale_fill_gradientn(colours = topo.colors(10)) + #change the color scale
+    theme_bw() #change the base theme of the plot
+  
+```
+
+Plot histograms of the two rasters
+
+```{r raster-histograms, warning=FALSE}
+  #first the dsm
+  #ggplot2 needs a dataframe, so convert the data
+  teak_dsm_df <- as.data.frame(teak_dsm)
+  qplot(teak_dsm_df$TEAK_lidarDSM, geom = "histogram", 
+        main = "Histogram of Teakettle DSM", 
+        xlab = "Values", ylab = "Count")
+
+  #next the aspect
+  teak_aspect_df <- as.data.frame(teak_aspect)
+  qplot(teak_aspect_df$TEAK_lidarAspect, geom = "histogram", 
+        main = "Histogram of Teakettle Aspect",
+        xlab = "Values", ylab = "Count")
+  
+```
