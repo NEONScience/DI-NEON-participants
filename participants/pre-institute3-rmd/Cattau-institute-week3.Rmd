@@ -1,0 +1,82 @@
+---
+title: "NEON Lidar Data"
+author: "Megan Cattau"
+date: "June 18, 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Megan Cattau Bio
+I am a **forest and landscape ecologist** who explores how anthropogenic factors affect disturbance dynamics in order to inform **conservation and land management** decisions. I have just joined the University of Colorado Department of Geography and the Earth Lab as a postdoc to examine forest health and analyze what is driving Colorado forest dieback. I’ll be integrating datasets on canopy structure and loss, drought, beetle kill, fire dynamics, and field-based surveys of forest structure to identify convergence and divergence of disturbance events, cross-scale interactions, and consequent ecosystem response. In addition, I will use these data sources to guide targeted observations of forest properties detected from a suite of sensors on unmanned aerial systems. 
+
+## Capstone Project
+I am interested in characterizing the structure of vegetative regrowth after fire disturbance. For this objective, I would use the NEON Airborne Observation Platform (AOP) data, combined with fire hotspot locations derived from MODIS. For the study area, I would use one of the sites for which LiDAR data is available (e.g., D03). 
+Another option if this proves to be too complicated would be to characterize the structural habitat requirements of a species of interest. I would use climate data (Worldclim) and AOP data as predictors sampled at species occurrence points from GBIF in a species distribution model (Bioclim, GLM, or Maxent).
+
+
+# Week 3 Activity
+
+This exercise demonstrates using some of the LiDAR data products collected over Lower Teakettle, a NEON relocatable field site in California
+
+We will first load the required packages for this exercise, including rgdal and raster, and set the working directory.
+
+```{r setup-read-data}
+library(rgdal)
+library(raster)
+# set working directory
+setwd("/Users/megancattau/Documents/data/NEONDI-2016/")
+```
+
+We will then load our first raster dataset, TEAK_lidarDSM, the digital surface model (DSM).
+
+```{r load-dsm-raster }
+# import dsm
+teak_dsm <- raster("NEONdata/D17-California/TEAK/2013/lidar/TEAK_lidarDSM.tif")
+```
+
+We will visualize this data by plotting it.
+
+```{r plot-dsm-raster}
+
+# plot dsm
+plot(teak_dsm, col=heat.colors(10), main="Teak Lidar Data")
+```
+
+Next, we will import the TEAK_lidarCHM data, the canopy height, and plot it.
+
+```{r load-and-plot-tree-height-raster }
+
+# import raster
+teak_CHM <- raster("NEONdata/D17-California/TEAK/2013/lidar/TEAK_lidarCHM.tif")
+
+# plot raster
+plot(teak_CHM, col=heat.colors(10), main="Teak Tree Height")
+```
+
+We will explore the data by creating histograms for both rasters.
+
+```{r histograms-dsm-and-tree height-rasters, warnings=FALSE}
+
+# histogram dsm
+hist(teak_dsm, main="Lower Teakettle Digital Surface Model")
+
+# histogram slope
+hist(teak_CHM, main="Lower Teakettle Tree Height (m)")
+```
+
+We will look at the relationship between dsm and tree height by plotting these rasters against one another.
+
+```{r plot-dsm-and-tree-height-rasters}
+
+# plot dsm and tree height
+plot(teak_CHM, teak_dsm)
+```
+
+## Summary
+The majority of the trees at this field site are quite short at 5 meters or under, and tree height does not appear to have a relationship with elevation. Rather, the tallest trees emerge at mid- to high- elevations.
+
+
