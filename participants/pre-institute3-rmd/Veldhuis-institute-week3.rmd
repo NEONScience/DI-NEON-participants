@@ -1,0 +1,69 @@
+---
+title: "Explore NEON LiDAR Data"
+author: "Michiel P. Veldhuis"
+date: "19 juni 2016"
+output: html_document
+---
+
+# Bio
+**Your Name:** *Michiel P. Veldhuis* 
+
+**Domain of interest:**
+*Ecosystem ecology, so far with the main focus on African savanna ecosystems. I obtained my PhD studying the organization of ecosystems in Hluhluwe-iMfolozi Park. Currently working as Postdoc in Serengeti-Mara investigating the resilience of ecosystem services.*
+
+**One goal for the course:**
+*Learn how to efficiently use Airborne or Satellite data from data acquisition all the way to analyses, including organized documentation.* 
+
+# About My Project
+
+*Project 1. Linking ecological stoichiometry data from field measurements to hyperspectral imaging (AOP)*
+
+Summary: Hyperspectral images obtained from the Airborne Observation Platform can be used to study the chemical characteristics of the vegetation. Furthermore, plant foliar chemical properties are/will be available. Linking the information obtained from hyperspectral images to the chemical properties (nutrient contents, stoichiometric ratios) might prove a powerful tool to study nutrient dynamics, availabilities and limitations at large spatial scales (continent, but maybe even the planet). In this project I would like to test whether these plant foliar chemical properties might be reliably estimated from airborne data. 
+
+Data needed: Hyperspectral images for as many sites possible and associated plant foliar chemical properties.  
+
+ 
+  
+*Project 2. Quantifying ecosystem organization using distribution in vegetation height (LiDAR)*
+
+Summary: Although it is easy to identify a forest or grassland and therefore describe the organization of ecosystems qualitatively, it is not easy to quantify this within a few metrics. One possibility to do so is using frequency distributions in vegetation height. Using the LiDAR data from the different sites spanning the continent, we can obtain such frequency distributions for each site and can try to reduce this amount of information to a few metrics (for example using some ordination techniques). If successful, these metrics that are used to describe the organization of North American ecosystems could be linked to environmental conditions (rainfall, temperature) and to patterns (biodiversity of different functional groups) and processes (nutrient cycling).
+
+Data needed: LiDAR data for as many sites as possible. Data on environmental conditions for the same sites.
+
+# Week 3 Activity 
+This page demonstrates some of the NEON Teakettle LiDAR data products in R. The wording of this text should clearly describe the code and outputs that you will be adding the page
+
+```{r setup-read-data }
+   library(rgdal)
+   library(raster)
+
+   # set working directory to ensure R can find the file we wish to import
+   setwd("C:/Users/p250929/Documents/data/NEONDI-2016/")
+
+```
+ 
+```{r load-dsm-raster }
+
+   # import dsm
+   teak_chm <- raster("NEONdata/D17-California/TEAK/2013/lidar/TEAK_lidarCHM.tif")
+   sjer_chm <- raster("NEONdata/D17-California/SJER/2013/lidar/SJER_lidarCHM.tif")
+```
+
+```{r plot-dsm-raster}
+
+   # Plot dsm rasters
+   plot(teak_chm, main="Canopy Height Model TEAK", xlab="X-coordinate", ylab="Y-coordinate")
+   plot(sjer_chm, main="Canopy Height Model SJER", xlab="X-coordinate", ylab="Y-coordinate")
+
+```
+
+```{r plot-histograms}   
+
+   # Plot histrograms
+   hist(teak_chm, main="Histogram CHM TEAK", ylab="Frequency", xlab="Canopy height", breaks=seq(0,56,by=1), maxpixels=100000, xlim=c(0,20))       
+   hist(sjer_chm, main="Histogram CHM SJER", ylab="Frequency", xlab="Canopy height", breaks=seq(0,56,by=1), maxpixels=100000, xlim=c(0,20))
+
+```
+
+Conclusion: 
+At SJER a peak in canopy height is found at about 6 meter. At TEAK most of the landscapes is covered with canopy smaller than 1 meter.
