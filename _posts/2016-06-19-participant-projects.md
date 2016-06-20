@@ -3,7 +3,7 @@ layout: post
 title: "NEON Data Institute 2016 -- Participant Introductions"
 date:   2016-06-19
 dateCreated:  2016-06-19
-lastModified: 2016-06-19
+lastModified: 2016-06-20
 authors: [NEON Data Skills]
 contributors: []
 packagesLibraries: []
@@ -40,6 +40,7 @@ institute repo.
 * [Jones]({{site.baseurl}}/participants/pre-institute3-rmd/Jones-institute-week3.html) 
 * [joseph]({{site.baseurl}}/participants/pre-institute3-rmd/joseph-institute-week3.html) 
 * [Looker]({{site.baseurl}}/participants/pre-institute3-rmd/Looker-institute-week3.html) 
+* [McCaffrey]({{site.baseurl}}/participants/pre-institute3-rmd/McCaffrey-Institute-Week3.html) 
 * [Montano]({{site.baseurl}}/participants/pre-institute3-rmd/Montano-institute-week3.html) 
 * [Paul]({{site.baseurl}}/participants/pre-institute3-rmd/Paul-Robert-NEONDI16-week3.html) 
 * [Remigio]({{site.baseurl}}/participants/pre-institute3-rmd/Remigio-institute-week3.html) 
