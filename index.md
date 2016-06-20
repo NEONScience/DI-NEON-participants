@@ -1,7 +1,14 @@
 ---
-
+layout: home
+description: "A site for the NEON Data Institute 2016."
+Tags:
+image:
+  feature: data-institute-2016.png
+  credit: National Ecological Observatory Network (NEON)
+  creditlink: http://www.neonscience.org
 ---
 
-## Hi this is the home page
+## Welcome to the NEON Participants Data Institute Page
 
-This is a page about  me! yes!
+
+### -->>[Click Here to View Everyone's Bio!]({{site.baseurl}}/list-all-participants/) <<-
