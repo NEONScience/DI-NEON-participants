@@ -1,0 +1,57 @@
+---
+layout: post
+title: "NEON Data Institute 2016 -- Participant Introductions"
+date:   2016-06-19
+dateCreated:  2016-06-19
+lastModified: `r format(Sys.time(), "%Y-%m-%d")`
+authors: [NEON Data Skills]
+contributors: []
+packagesLibraries: []
+categories: []
+mainTag: 
+tags: []
+tutorialSeries:
+description: ""
+code1:  
+image:
+  feature: 
+  credit: 
+  creditlink:
+permalink: /list-all-participants/
+comments: false
+---
+
+## Check Number of Submissions
+
+The code below checks to see if we have a total of 23 files submitted to the 
+institute repo.
+
+```{r setup, echo=FALSE}
+ options(stringsAsFactors = FALSE)
+# get a list of all html files in a dir
+all.files <- list.files("~/Documents/GitHub/DI16-NEON-participants/participants/pre-institute3-rmd/", pattern="\\.html$")
+
+if(length(all.files)<23){
+  print("Uh Oh - we are missing some submissions")
+}
+
+
+```
+
+## Below Are Participants Bios and Project Ideas!
+
+```{r print-file-list, results='asis', echo=FALSE}
+link.list <- data.frame(participants=c("empty"))
+i <- 0
+# for each element in the list, turn into a markdown link.
+for (a.file in all.files){ 
+  i <- i+1
+  # print(a.file)
+  # Create File Name
+  last.name <- unlist(strsplit(a.file, split = "-"))
+  last.name <- last.name[1]
+  cat(paste0("* [", last.name, "]({{site.baseurl}}/participants/pre-institute3-rmd/", a.file, ") \n"))
+  # link.list[i,] <- paste0("* [", last.name, "](participants/pre-institute3-rmd/", a.file, ") \n")
+}
+
+```

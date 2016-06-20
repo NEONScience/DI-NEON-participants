@@ -1,0 +1,80 @@
+---
+title: "Explore NEON LiDAR Data"
+author: "Kunxuan Wang"
+date: "June 16, 2016"
+output: html_document
+---
+
+## Bio
+
+Hi everyone, I am a masters student at the *University of Illinois Urbana-Champaign*. My research focuses on using waveform lidar data to describe vegetation structure such as biomass and forest canopy clumping. For future works, I hope to incorporate hyperspectural data into my research in hopes of describing forest and even row crops in greater detail. Therefore, one of my main goals for the **2016 NEON Data Institute** is to learn more about tools and data processing skills for working with hyperspectural data as well as lidar data.
+
+
+## my Capstone Project
+
+For the project, I propose to use hyperspectural to study how vegetation photosynthesis might relate to species information in a forested site. Both photosynthesis and tree species can theoretically be derived from hyperspectural data. If possible I would also like to use lidar data to attribute vertical structure to photosynthesis. However, this might be beyond the scope of a one week project. 
+
+## Week 3 Activity
+This page imports two raster data set from the Teakettle training data set, the digital surface model (dsm) and the canopy height model (chm). Each data set and their hitograms are then plotted.
+
+***
+
+This section sets up the environment by improting necessary libraries and seting the working directory
+```{r setup-read-data}
+  library(rgdal)
+  library(raster)
+  
+  # set working directory to ensure R can find the file we wish to import
+  setwd("C:/Users/Kunxuan/Documents/data/NEONDI-2016/")
+  
+```
+
+***
+The following two sections load the digital surface model and plot it. 
+```{r load-dsm-raster }
+  # import dsm
+  teak_dsm <- raster("NEONdata/D17-California/TEAK/2013/lidar/TEAK_lidarDSM.tif")
+
+```
+
+```{r plot-dsm-raster }
+  # plot dsm
+  plot(teak_dsm, main="Digital Surface Model\nNEON Teakettle")
+
+```
+***
+The following two sections load the canopy surface model and plot it
+
+```{r load-chm-raster }
+  # import chm
+  teak_chm <- raster("NEONdata/D17-California/TEAK/2013/lidar/TEAK_lidarCHM.tif")
+
+```
+
+```{r plot-chm-raster }
+  # plot chm
+  plot(teak_chm, main="Canopy Height Model\nNEON Teakettle")
+```
+
+***
+The following two sections plot the histograms of the dsm and the chm respectivly
+```{r plot-dsm-histograms }
+  # plot histogram for dsm
+  dsm_hist <- hist(teak_dsm, 
+                   breaks=5,
+                   xlab="Elevation (m)",
+                   main="DSM Histogram\nNEON Teakettle")
+
+```
+
+This chunk prevents warnings using the `waring=FALSE` parameter
+```{r plot-chm-histograms, warning=FALSE}
+  # plot histogram for chm
+  dsm_hist <- hist(teak_chm, 
+                   breaks=5,
+                   xlab="Elevation (m)",
+                   main="CHM Histogram\nNEON Teakettle")
+
+```
+
+average tree height is basically 0. There are hardly any trees. 
