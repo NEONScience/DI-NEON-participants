@@ -1,0 +1,95 @@
+---
+title: "Knitr Tutorial"
+author: "Robert Paul"
+date: "June 16, 2016"
+output: html_document
+---
+
+
+***
+
+# Robert Paul
+## University of Illinois at Urbana-Champaign
+### Department of Plant Biology
+
+***
+
+I'm a PhD student student, and my main research interest is modeling trace gas flux biogeochemistry in plant-soil interactions within the context of climate change. I'm also driven to create and enjoy listening to podcasts, cooking, and geocaching.
+
+My *learning goals* for the NEON Institute are...
+
+* Getting a better understanding of hyperspectral and LiDAR data
+* Linking observational data with remote sensing products to reveal deep ecological insights
+* Learning methods of collaborative and reproducible science with version control/documentation
+* Making cool images
+
+***
+
+## Capstone Project
+
+My *current project* involves identifying and describing, through both observations and modeling, areas affected by intermittent flooding events. I would like to use the course to develop a robust, reproducible workflow to identify areas across a landscape where ponding and flooding events have occurred or are likely to occur after intense precipitation. Some of the data I expect to be useful are:
+
+* **Landsat 8** NIR and SWIR bands
+* **gSSURGO** raster soil data
+* **Boulder, CO pre- and post-flooding 2013** LiDAR and hyperspectral data
+* **LiDAR** data of sites with poorly-drained soils
+
+***
+
+## Some Raster Data Sets
+
+```{r setup-read-data, warning=FALSE}
+# Load libraries we'll need for LiDAR DTM/DSMs
+library(rgdal)
+library(raster)
+library(knitr)
+
+# Which system are we on?
+currentSys <- Sys.info()["sysname"]
+
+# Are we on Linux via the Chromebook?
+if (currentSys == "Linux") {
+  dataPath = "/media/removable/SD_128GB/Docs"
+} else if (currentSys=="Darwin") { # Are we on the Macbook Pro?
+  dataPath <- "/Users/exnihilo/Box Sync/Work/Workshops/NEONDI-2016/NEONdata/D17-California/TEAK/2013/lidar/"
+}
+
+# Set working directory
+setwd(dataPath)
+# Tell Knitr we're using a different root dir
+opts_knit$set(root.dir=dataPath)
+```
+
+### Embedded Plots:
+
+```{r, load-dsm-raster}
+# Get the surface raster for TEAK
+teak_dsm <- raster("TEAK_lidarDSM.tif")
+```
+
+```{r, plot-dsm-raster}
+# Plot the TEAK DSM raster
+plot(teak_dsm, main="Lower Tea Kettle DSM", col=rainbow(250))
+```
+
+```{r, load-chm-raster}
+# Get the CHM raster for TEAK
+teak_chm <- raster("TEAK_lidarCHM.tif")
+```
+
+```{r, plot-chm-raster}
+# Plot the TEAK CHM raster
+plot(teak_chm, main="Lower Tea Kettle Tree Heights")
+```
+
+```{r, plot-dsm-hist}
+# Plot the TEAK DSM raster's histogram
+hist(teak_dsm, main="Lower Tea Kettle DSM Pixel Value Distribution", col=heat.colors(30))
+```
+
+```{r, plot-chm-hist}
+# Plot the TEAK DSM raster's histogram
+hist(teak_chm, main="Lower Tea Kettle Tree Height Pixel Value Distribution", col=heat.colors(3))
+```
+
+**We can see from the tree height raster that trees are sparse at this site. **

@@ -1,0 +1,56 @@
+---
+title: "Hamm-institue-week3"
+author: "Chris Hamm"
+date: "June 17, 2016"
+output: html_document
+---
+
+### I am an evolutionary ecologist that works with the Lepidoptera (butterflies and moths). Evolutionary ecologist is code for "I do a lot of different things." 
+
+Some random facts about me:
+
+* I grew up in California
+* I worked as a wildland firefighter and served in the Army
+* Went to Michigan State University for grad school
+* I enjoy beer and have been known to write beer inspired poetry in an attempt to win free beer (no verified video of this exists).
+* I have a dog named Larry
+* One goal I have for this course is to get comfortable finding geospatial data. 
+
+
+### Capstone Project
+#### To be completely honest, I am still thinking about what I want  my *Capstone* project to be because I am not entirely sure there are enough vegetation data to do what I want, but here is what I am thinking:
+How are estimates of plant beta diversity (species turnover) associated between the the aerial and ground truthed data?I want to do this with a metric called Jost' d, which is a numbers equivalent for the effective number of communities in a site. I suspect that different values of **q**, which changes the weighting given to rare species, will effect the ground truthed data more strongly than aerial data. 
+
+
+```{r opening-bits}
+set.seed(896234857)
+# setwd("~/Desktop/Projects/NEON-2016/") # I intensely dialike that knitr and RStudio will default to the dir of the project and not listen to the setwd() command issued in the code chunk. 
+library("raster")
+library("rgdal")
+```
+
+With our seed set and packages loaded it is time to import data. Once again I would like to state that `setwd()` should be enough for knitr to set the working directory, but nooooooo. I will figure out how to override this and post the answer.
+
+```{r import-data, eval = TRUE}
+ras1 <- raster("~/Desktop/Projects/NEON-2016/NEONDI-2016/NEONdata/D17-California/TEAK/2013/lidar/TEAK_lidarDSM.tif") # import the raster image
+str(ras1) # look at the structure of the data
+
+ras2 <- raster("~/Desktop/Projects/NEON-2016/NEONDI-2016/NEONdata/D17-California/TEAK/2013/lidar/TEAK_lidarDTM.tif")
+str(ras2)
+```
+
+Now that the data have been imported, we can plot the two raster images and the requested histograms of the data. 
+
+```{r plot-images, eval = TRUE, tidy = TRUE}
+# plot image 1 (DSM)
+plot(ras1, main = "Lower Teakettle site \n Digital Surface Model", xlab = "UTM Westing Coordinates", ylab = "UTM Northing Coordinates") # plot the image
+hist(ras1, xlim = c(2150, 2400), ylim = c(0, 6e4), las = 1, col = "grey", main = "Lower Teakettle site \n Digital Surface Model", xlab = "Value", ylab  = "", maxpixels = 1e7, breaks = "Sturges")
+
+# plot image 2 (DTM)
+plot(ras2, main = "Lower Teakettle site \n Digital Terrain Model", xlab = "UTM Westing Coordinates", ylab = "UTM Northing Coordinates", col = grey(1:100/100), legend = FALSE) # plot the image
+plot(ras2, col = rainbow(100), alpha = 0.2, add = TRUE, legend = FALSE)
+
+hist(ras2, xlim = c(2150, 2400), ylim = c(0, 6e4), las = 1, col = "grey", main = "Lower Teakettle site \n Digital Terrain Model", xlab = "Value", ylab  = "", maxpixels = 1e7, breaks = "Sturges")
+```
+
+### Done and done

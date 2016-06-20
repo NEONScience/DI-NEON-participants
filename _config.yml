@@ -1,0 +1,68 @@
+title:  Participants Repo Data Institute 2016
+description: Remote Sensing and Reproducible, Open Science
+
+# Comment out url when working locally to resolve base urls correctly
+url:    http://NEON-WorkWithData.github.io/DI16-NEON-participants
+baseurl: http://NEON-WorkWithData.github.io/DI16-NEON-participants
+
+# Uncomment the first localhost when working locally
+# url: http://localhost:4000
+# baseurl: http://localhost:4000
+
+disqus_shortname: neondataskills
+
+# Social networking links are used in author-bio sidebar. Update and remove as you like.
+
+# Owner/author information
+owner:
+  name: NEON EDUCATION
+  avatar: profilePic.png
+  bio: ""
+  email: "neondataskills@neoninc.org"
+  twitter: ""
+  github: "NEON-WorkWithData"
+  youtube: "NEONBetaEDU"
+# instagram:      ""
+# For Google Authorship https://plus.google.com/authorship
+# google_plus:    ""
+
+# Analytics and webmaster tools stuff goes here
+# google_analytics:   UA-52746937-1
+#google_verify:      UQj93ERU9zgECodaaXgVpkjrFn9UrDMEzVamacSoQ8Y
+# https://ssl.bing.com/webmaster/configure/verify/ownership Option 2 content= goes here
+#bing_verify:        D81F4C18A6CB3018F64D7C827D953DFD
+
+# Links to include in top navigation
+# For external links add external: true
+links:
+  - title: NEONDataSkills.org
+    url: http://neondataskills.org
+    external: true
+
+  - title: NEON Website
+    url: http://neonscience.org
+    external: true
+
+# http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone:    America/Denver
+future:      true
+markdown:    kramdown
+
+permalink:   /:categories/:title/
+
+kramdown:
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..2
+  enable_coderay: false
+
+  coderay:
+    coderay_line_numbers:
+    coderay_line_numbers_start: 1
+    coderay_tab_width: 4
+    coderay_bold_every: 10
+    coderay_css: class
+
+include: [".htaccess"]
+exclude: ["*.Rmd", "lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules", "Gemfile", "Gemfile.lock", "LICENSE", "README.md"]
