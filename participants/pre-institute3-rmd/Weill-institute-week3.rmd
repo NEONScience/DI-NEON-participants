@@ -1,9 +1,9 @@
 ============
-### Title: Explore NEON LiDAR Data
-### Author: Allie Weill
-### Date: June 12, 2016
-### Output: html_document
---------
+title: Explore NEON LiDAR Data
+author: Allie Weill
+date: June 12, 2016
+output: html_document
+=============
 ### Bio
 
 Hi all! I am a 4th year PhD student in the Ecology Graduate Group at UC Davis. My research focuses on fire ecology of the shrublands (chaparral) of California. I'm interested in how these fire-prone and fire-adapted systems respond to the changes in fire frequency and magnitude that result from climate change and human activity. My work involves both plants (populations and communities) and people who live in fire-prone systems.
