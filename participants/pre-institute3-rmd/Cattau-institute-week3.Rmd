@@ -77,6 +77,6 @@ plot(teak_CHM, teak_dsm)
 ```
 
 ## Summary
-The majority of the trees at this field site are quite short at 5 meters or under, and tree height does not appear to have a relationship with elevation. Rather, the tallest trees emerge at mid- to high- elevations.
+The majority of the trees at this field site are quite short at 5 meters or under. Tree height appears to have a slight positive relationship with elevation, perhaps due to a biophysical gradient (e.g., precipitation) or due to a more recent land use history of clearing at lower elevations.
 
 
