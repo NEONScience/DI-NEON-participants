@@ -9,7 +9,7 @@ including:
 
 * our scientist-focused Data Skills content
   + workshops at various conferences, 
-  + self-paced tutorials on the neondataskills.org website, and 
+  + self-paced tutorials on the [neondataskills.org](www.neondataskills.org) website, and 
   + these Data Institutes;
 * our undergraduate focused data skills & ecological concept content, and  
 * our undergraduate summer internship program hosted at NEON headquarters. 
