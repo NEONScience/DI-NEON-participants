@@ -13,8 +13,8 @@ Idea: Identification of the presence of invasive plant species in forests using 
 Rational: To learn how to use AOP data to map the distribution of vegetation.
 
 Types of NEON data needed:
-	*AOP data from forested NEON sites
-	*Plant community presence and abundance data from the same sites
+AOP data from forested NEON sites
+Plant community presence and abundance data from the same sites
 
 
 
