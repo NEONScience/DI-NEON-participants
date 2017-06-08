@@ -4,14 +4,14 @@ Hello, I am a PhD student at Oregon State University in the Water Resources Engi
 
 ### Goals
 * Become a better collaborator
-* Discover NEON data products & how to process/use them
+* Discover NEON data products & how to process and use them
 * Get inspiration for future projects idea using NEON data
 
 
 ### Proposed Capstone Project
 
 #### Summary
-Explore simple scaling relations between topographic indices and available canopy/vegetation indices/characteristics available in the NEON airborne remote sensing products. Repeat at multiple sites and compare scaling relations.
+Explore simple scaling relations between topographic indices and available vegetation indices/characteristics available in the NEON airborne remote sensing products. Repeat at multiple sites and compare scaling relations.
 
 
 *NEON AOP Data*
