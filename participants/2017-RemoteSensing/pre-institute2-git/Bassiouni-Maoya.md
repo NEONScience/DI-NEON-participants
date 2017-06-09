@@ -5,7 +5,7 @@ Hello, I am a PhD student at Oregon State University in the Water Resources Engi
 ### Goals
 * Become a better collaborator
 * Discover NEON data products & how to process and use them
-* Get inspiration for future project ideas using NEON data
+* Get inspiration for future projects using NEON data
 
 
 ### Proposed Capstone Project
