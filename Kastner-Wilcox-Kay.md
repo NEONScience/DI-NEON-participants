@@ -1,5 +1,5 @@
-## Bio
-I am Kay Kastner-Wilcox and I am a PhD Candidate in Soil and Water Sciences at the
+﻿## Bio
+My name is Kay Kastner-Wilcox and I am a PhD Candidate in Soil and Water Sciences at the
 University of Florida.  My research focuses on the human dimension of natural resources
 and more specifically on individuals’ perception and knowledge of soil and its
 degradation in conjunction with the assessment of the anthropogenic causes of soil degradation.
