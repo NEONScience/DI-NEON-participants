@@ -17,8 +17,8 @@ Proposed Capstone Project
 
 **Questions:**
 
-1.  How can we use AOP data to support the validation of plant productivity estimates from satellite-measurements, right now we h?
-2.  How AOP data can be used in semi-arid shrub-grasslands? Learn from NEON's experiences using AOP data in this type of biome
+1.  How can we use AOP data to support the validation of plant productivity estimates from satellite-measurements?
+2.  How AOP data can be used in semi-arid shrub-grasslands? Learn from NEON's experiences using AOP data in this type of biome.
 
 *I really would like to have the opportunity to start a collaboration to draft a study during the Data Institute week.*
 
