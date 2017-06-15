@@ -1,7 +1,7 @@
 NEON-Data Institute 2017
 ================
 <b><font size='5'>Guillermo E. Ponce-Campos</font></b>
-07 June, 2017
+15 June, 2017
 
 I am a Postdoc at the USDA-ARS Southwest Watershed Research Center (SWRC) working on the application of remote sensing technologies to study vegetation responses to environmental factors. My main interests focus on the use of remote sensing time series to study vegetation phenology stages and the use of vegetation indexes as proxies for estimating vegetation states, mainly productivity. I also work with geo-spatial tools, experimenting as needed, such as R-spatial tools, GDAL, Google Earth Engine, ESRI-ArcMap, QGIS, and Python, I used to do everything in IDL.
 
