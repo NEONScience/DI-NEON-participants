@@ -1,0 +1,500 @@
+   36  cd pre-institute2-git/
+   37  ls 
+   38  git add participants/2017-RemoteSensing/pre-institute2-git/Ponce-Guillermo.md
+   39  git add Ponce-Guillermo.md
+   40  git commit -m "Week 2 assignment - Guillermo E. Ponce-Campos"
+   41  git push origin master 
+   42  git add Ponce-Guillermo.md
+   43  git commit -m "Week 2 assignment - Guillermo E. Ponce-Campos"
+   44  git push origin master 
+   45  ls ~/Downloads/Anaconda3-4.4.0-MacOSX-x86_64.sh 
+   46   ~/Downloads/Anaconda3-4.4.0-MacOSX-x86_64.sh 
+   47  sudo  ~/Downloads/Anaconda3-4.4.0-MacOSX-x86_64.sh 
+   48  . ~/Downloads/Anaconda3-4.4.0-MacOSX-x86_64.sh 
+   49  bash  ~/Downloads/Anaconda3-4.4.0-MacOSX-x86_64.sh 
+   50  eexit
+   51  exit
+   52  exit
+   53  python
+   54  cd 
+   55  pwd
+   56  cd anaconda3/
+   57  ls 
+   58  conda create -n py34 python=3.4 anaconda
+   59  source activate py34
+   60  python --version
+   61  conda install gdal
+   62  conda install h5py
+   63  conda install matplotlib
+   64  gdalinfo --version
+   65  gdalinfo
+   66  gdal 
+   67  python
+   68  python -m ipykernel install --user --name py34 --display-name "Python 3.4 NEON-RSDI"
+   69  jupyter notebook
+   70  pwd
+   71  cd ..
+   72  ls 
+   73  cd Documents/
+   74  cd GitHub/
+   75  ls 
+   76  cd DI-NEON-participants/
+   77  ls 
+   78  cd participants/
+   79  ls
+   80  cd 2017-RemoteSensing/
+   81  ls 
+   82  cd pre-institute3-Jupyter/
+   83  ls 
+   84  vi README.md 
+   85  jupyter notebook
+   86  conda search gdal
+   87  pycharm
+   88  conda install pycharm
+   89  python -c "from osgeo import gdal; print(gdal.__version__)"
+   90  conda update conda
+   91  exit
+   92  locate libjpeg.8.dylib
+   93  conda update conda
+   94  conda install gdal
+   95  source activate py34
+   96  conda install gdal
+   97  conda upgrade numpy
+   98  python -c "from osgeo import gdal; print(gdal.__version__)"
+   99  python
+  100  exit
+  101  source activate py34
+  102  python
+  103  conda install krb5
+  104  python
+  105  exit
+  106  source activate py34
+  107  python
+  108  conda install -f jpeg=8
+  109  conda install libgdal
+  110  python
+  111  quit
+  112  exit
+  113  source activate py34
+  114  python
+  115  cd anaconda3/
+  116  ls 
+  117  ls 
+  118  cd conda-meta/
+  119  ls 
+  120  cd ..
+  121  ls 
+  122  ls -a 
+  123  ls -a 
+  124  cd .ipynb_checkpoints/
+  125  ls 
+  126  cd ..
+  127  ls 
+  128  cd conda-meta/
+  129  ls 
+  130  cd ..
+  131  ls 
+  132  cd ..
+  133  ls 
+  134  cd anaconda3/
+  135  ls 
+  136  ls 
+  137  pwd
+  138  conda list
+  139  locate .condarc
+  140  deactivate py34
+  141  source deactivate py34
+  142  conda info --envs
+  143  python
+  144  source deactivate root
+  145  python
+  146  conda info --envs
+  147  cd ..
+  148  source deactivate root
+  149  conda info --envs
+  150  conda remove --name py34 --all
+  151  conda info --envs
+  152  cd anaconda3
+  153  cd envs
+  154  ls 
+  155  ls 
+  156  vi nothing
+  157  ls 
+  158  source activate nothing 
+  159  conda info --envs
+  160  python
+  161  ls 
+  162  cd nothing 
+  163  mkdir bin
+  164  source activate nothing 
+  165  conda info --envs
+  166  source activate bin
+  167  python
+  168  conda info --envs
+  169  cd ..
+  170  ls 
+  171  cd .
+  172  ls 
+  173  cd anaconda3/
+  174  cd envs/
+  175  l
+  176  ls 
+  177  cd bin
+  178  ls 
+  179  cd bin
+  180  ls 
+  181  cd activate 
+  182  ls
+  183  vi activate 
+  184  cd ..
+  185  cd ..
+  186  ls 
+  187  cd nothing 
+  188  ls 
+  189  cd ..
+  190  pwd
+  191  l 
+  192  ls 
+  193  cd envs
+  194  ls 
+  195  ls -l 
+  196  source deactivate bin
+  197  ls 
+  198  conda remove --name bin
+  199  conda remove --name bin --all
+  200  conda remove --name nothing --all
+  201  ls 
+  202  conda remove --name nothing --all
+  203  cd ..
+  204  conda remove --name nothing --all
+  205  conda info --envs
+  206  ls 
+  207  cd envs
+  208  ls 
+  209  rm -rf nothing 
+  210  ls 
+  211  cd ..
+  212  ls 
+  213  conda info --envs
+  214  rm -rf nothing 
+  215  ls 
+  216  cd envs/
+  217  ls 
+  218  mkdir -p ~/anaconda3/envs/nothing/bin 
+  219  ls 
+  220  cd nothing/
+  221  ls
+  222  cd bin
+  223  cd ..
+  224  cd ..
+  225  ls 
+  226  cd ..
+  227  which python
+  228  python
+  229  ls 
+  230  cd  ..
+  231  ls 
+  232  exit
+  233  source activate py34
+  234  python
+  235  otool -L /usr/local/lib/libjpeg.8.dylib
+  236  otool 
+  237  locate libjpeg.8.dylib
+  238  rm -rf /Users/gponce/H2O_WORKSHOP/anaconda/
+  239  sudo rm -rf /Users/gponce/H2O_WORKSHOP/anaconda/
+  240  locate libjpeg.8.dylib
+  241  sudo rm -rf /Users/gponce/H2O_WORKSHOP/anaconda
+  242  locate libjpeg.8.dylib
+  243  source deactivate py34
+  244  source activate py34
+  245  locate libjpeg.8.dylib
+  246  python
+  247  ls /Users/guillermoponce/anaconda3/envs/py34/lib/libgdal.20.dylib
+  248  ls -l  /Users/guillermoponce/anaconda3/envs/py34/lib/libgdal.20.dylib
+  249  locate libjpeg.8.dylib
+  250  ls -l /Users/gponce/H2O_WORKSHOP/anaconda/lib/libjpeg.8.dylib
+  251  locate libjpeg.8.dylib
+  252  ls /Applications/GIMP.app/Contents/Resources/lib/libjpeg.8.dylib
+  253  ls -l  /Applications/GIMP.app/Contents/Resources/lib/libjpeg.8.dylib
+  254  ls -l  /Users/guillermoponce/anaconda3/envs/py34/lib/libgdal.20.dylib
+  255  ls /Applications/GIMP.app/Contents/Resources/lib/libjpeg.8.dylib
+  256  locate libjpeg.8.dylib
+  257  source deactivate py34
+  258  conda install anaconda-clean
+  259  anaconda-clean
+  260  ls 
+  261  python
+  262  exit
+  263  python
+  264  conda info --envs
+  265  source activate nothing
+  266  python
+  267  source remove nothing
+  268  source deactivate nothing
+  269  source remove nothing
+  270  source remo
+  271  conda remove --name nothing --all
+  272  ls 
+  273  pwd
+  274  ls -l 
+  275  conda info --envs
+  276  pwd
+  277  cd anaconda3/
+  278  ls 
+  279  conda create -n py34 python=3.6 fiona jupyter
+  280  conda info fiona
+  281  conda create -n py34 python=3.4 fiona jupyter
+  282  python
+  283  conda activate py34
+  284  source activate py34
+  285  python
+  286  conda install gdal
+  287  python
+  288  n
+  289  ls 
+  290  locate condar
+  291  locate condarc
+  292  locate .condarc
+  293  cd 
+  294  locate .condarc
+  295  cd anaconda3/
+  296  ls 
+  297  source deactivate py34
+  298  conda remove py34
+  299  conda info --envs
+  300  conda remove py34
+  301  conda info --envs
+  302  conda remove --name py34 --all
+  303  ls 
+  304  conda create -n py34 python=3.4 anaconda
+  305  source activate py34
+  306  python
+  307  conda install -c conda-forge gdal=2.2.0
+  308  conda info gdal
+  309  conda install -c conda-forge gdal=2.1.0
+  310  conda info hdf5
+  311  conda info h5py
+  312  conda install h5py
+  313  conda install matplotlib
+  314  python
+  315  conda upgrade gdal
+  316  python
+  317  source remove  py34
+  318  conda remove py34
+  319  conda info --envs
+  320  conda remove --name py34 --all
+  321  conda info --envs
+  322  python
+  323  conda create –n py34 python=3.4 anaconda
+  324  conda create -n py34 python=3.4 anaconda
+  325  source activate py34
+  326  python
+  327  conda upgrade numpy
+  328  conda install gdal
+  329  conda install gdal
+  330  gdalinfo --version
+  331  gdalinfo --version
+  332  gdal_grid
+  333  conda install libjpeg
+  334  conda install jpeg
+  335  conda install libpng
+  336  source deactivate py34
+  337  exit
+  338  python
+  339  cd 
+  340  cd
+  341  anaconda-clean --yes
+  342  vi .bash_profile
+  343  ls -l -a | more
+  344  vi .bash_profile 
+  345  vi .bash_profile 
+  346  ls 
+  347  ls -a 
+  348  vi .anaconda_backup/
+  349  cd .anaconda_backup/
+  350  ls 
+  351  cd 2017-06-15T175913/
+  352  ls 
+  353  ls 
+  354  cd ..
+  355  cd ..
+  356  ls 
+  357  cd 
+  358  ls -a 
+  359  cd .config/
+  360  ls
+  361  cd ..
+  362  ls 
+  363  cd Downloads/
+  364  ls 
+  365  cd 
+  366  rm -rf anaconda3/
+  367  exit
+  368  python
+  369  ls 
+  370  pwd
+  371  cd Downloads/
+  372  ls 
+  373  ls Anaconda3-4.4.0-MacOSX-x86_64.sh 
+  374  ls Anaconda
+  375  ls Anaconda*
+  376  bash Anaconda2-4.4.0-MacOSX-x86_64.sh 
+  377  cd 
+  378  conda create –n py34 python=3.4 anaconda
+  379  exit
+  380  conda create –n py34 python=3.4 anaconda
+  381  conda create –n py34 python=3.4 anaconda
+  382  conda create –name py34 python=3.4 anaconda
+  383  conda create –n py34 python=3.4 anaconda
+  384  conda create –n py34 python=3.4 anaconda2
+  385  conda create –n py34 python=3.4 
+  386  conda
+  387  conda create –-name py34 python=3.4 anaconda
+  388  conda info --envs
+  389  conda create –n py34 python=3.4 
+  390  conda create -nn py34 python=3.4 
+  391  conda create -n py34 python=3.4 
+  392  source activate py34
+  393  python
+  394  python --version
+  395  conda install gdal
+  396  conda install h5py
+  397  python
+  398  conda install h5py
+  399  conda install matplotlib
+  400  python
+  401  source deactivate py34
+  402  python
+  403  vi .bash_profile
+  404  exit
+  405  python
+  406  pip install h5py
+  407  sudo pip install h5py
+  408  sudo pip install matplotlib
+  409  sudo pip install matplotlib
+  410  sudo pip install --upgrade  matplotlib
+  411  sudo pip install --upgrade  matplotlib
+  412  cd 
+  413  sudo pip install --upgrade  matplotlib
+  414  sudo pip install --upgrade gdal
+  415  gdalinfo --version
+  416  python
+  417  jupyter notebook
+  418  ls 
+  419  rm -rf Untitled*
+  420  ls 
+  421  anaconda-clean
+  422  anaconda
+  423  rm -rf anaconda2/
+  424  ls 
+  425  pwd
+  426  sl 
+  427  ls -l 
+  428  ls 
+  429  cd 
+  430  ls 
+  431  cd D
+  432  cd Do
+  433  cd Documents/
+  434  cd GitHub/
+  435  ls 
+  436  cd ..
+  437  cd ..
+  438  ls 
+  439  cd ..
+  440  ls 
+  441  cd 
+  442  ls 
+  443  cd Downloads/
+  444  ls 
+  445  ls Anaconda*
+  446  conda --version
+  447  rm Anaconda3-4.4.0-MacOSX-x86_64.sh
+  448  rm Anaconda2-4.4.0-MacOSX-x86_64.sh 
+  449  ls 
+  450  ls Anaconda3-4.4.0-MacOSX-x86_64.pkg 
+  451  exit
+  452  ls 
+  453  conda
+  454  cd anaconda/
+  455  ls 
+  456  cd 
+  457  conda --version
+  458  conda create -n py34 python=3.4 anaconda
+  459  source activate py34
+  460  python
+  461  python --version
+  462  conda install gdal
+  463  conda install h5py
+  464  conda install matplotlib
+  465  python
+  466  import gdal
+  467  python 
+  468  source deactivate py34
+  469  conda create -n py35 python=3.5 anaconda
+  470   source activate py35
+  471  python
+  472  conda install gdal
+  473  python
+  474  conda install -c conda-forge gdal=2.1.3
+  475  conda info gdal
+  476  source deactivate py35
+  477  exit
+  478  ls 
+  479  pwd
+  480  ls 
+  481  conda
+  482  conda --version
+  483  conda inf --env
+  484  conda inf --envs
+  485  conda inf --env
+  486  conda info --envs
+  487  conda create -n py36 python=3.6 anaconda
+  488  source activate py36
+  489  conda install gdal
+  490  conda info gdal
+  491  conda install numpy
+  492  conda install --upgrade numpy
+  493  conda install upgrade numpy
+  494  conda upgrade numpy
+  495  python
+  496  source deactivate py36
+  497  conda create -n py37 python=3.7 anaconda
+  498  source activate py36
+  499  source deactivate py36
+  500  exit
+  501  cd Documents/
+  502  ls 
+  503  cd GitHub/
+  504  ls 
+  505  cd DI-NEON-participants/
+  506  ls 
+  507  cd participants/
+  508  ls
+  509  cd 2017-RemoteSensing/
+  510  ls 
+  511  cd pre-institute2-git/
+  512  ls 
+  513  vi Ponce-Guillermo.md 
+  514  pwd
+  515  .cd ..
+  516  cd ..
+  517  ls 
+  518  cd pre-institute3-Jupyter/
+  519  pwd
+  520  pwd
+  521  ls 
+  522  source activate py36_2
+  523  conda install mayavi
+  524  conda install mlab
+  525  conda info mayavi
+  526  source deactivate py36_2
+  527  source activate py36_2
+  528  conda install osgeos
+  529  conda install osgeo
+  530  conda install osr
+  531  conda install geos
+  532  python 
+  533  history 
+  534  history | mre
+  535  history > t.txt
