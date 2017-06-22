@@ -1,0 +1,1 @@
+This directory contains participant code from the Wednesday coding activity.  
