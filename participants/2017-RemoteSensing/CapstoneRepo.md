@@ -1,6 +1,6 @@
 ## Capstone Project Repo List
 
-9:10 Biomass: 
+9:10 Biomass: https://github.com/thatsciencegal/neon-biomass.git
 
 9:35 Classification: 
 
