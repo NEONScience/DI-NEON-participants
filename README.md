@@ -13,8 +13,7 @@ data for 30 years.
 For more information on NEON, visit the website: 
 [www.neonscience.org](http://www.neonscience.org "National Ecological Observatory Network")
 
-This repo contains the materials used to build the NEON Data Skills resources 
-that are available for use on 
+For NEON Data Skills educational resources, visit 
 [the NEON Data Skills section of the NEON website](http://www.neonscience.org/neon-data-skills).
 
 
