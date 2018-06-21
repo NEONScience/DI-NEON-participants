@@ -3,7 +3,7 @@ Hello!
 
 I'm finishing my first year of a PhD in river ecology at Duke, advised by an aquatic ecosystem ecologist (Jim Heffernan) and a fluvial geomorphologist (Martin Doyle). I'm new to ecology, have a masters in computer science, and in my last life worked as a data scientist at the Cornell Lab of Ornithology on machine learning algorithms for [continent scale avian distribution estimates](https://ebird.org/science/modeling/) using citizen gathered data.
 
-I'm now interested, broadly, in how landscape structure shapes ecological processes. Right now I'm thinking about how ecological processes change in water parcels as they travel down whole river networks and encounter shifting physical conditions. I'm using downstream gradients of phytoplankton abundance as my study system. I also really like theory based math models. St a dissertation scale, hope to brew up math models which I'll confront with remotely measured data.
+I'm broadly interested in how landscape structure shapes ecological processes. Right now I'm thinking about how ecological processes change in water parcels as they travel down whole river networks and encounter shifting physical conditions. I'm using downstream gradients of phytoplankton abundance as my study system. I also really like theory based math models. St a dissertation scale, hope to brew up math models which I'll confront with remotely measured data.
 
 
 
