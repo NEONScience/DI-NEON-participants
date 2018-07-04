@@ -8,7 +8,9 @@ I am a relatively new assistant professor at the University of Florida, in the F
 ## Interests
 
 •	*Geomorphometry*, the science of quantitative terrain characterization from digital terrain models
+
 •	*Marine habitat mapping*, the interdisciplinary, spatially-explicit characterization of the marine environment in terms of its physical, chemical, biological and ecological components
+
 •	*Spatial sciences*, particularly acoustic remote sensing, spatial data quality and geostatistics
 ***
 
