@@ -11775,7 +11775,10 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Classify-cardinal-directions">Classify cardinal directions<a class="anchor-link" href="#Classify-cardinal-directions">&#182;</a></h1><p>In this code we will classify directions from an aspect raster</p>
+<h1 id="Classify-cardinal-directions">Classify cardinal directions<a class="anchor-link" href="#Classify-cardinal-directions">&#182;</a></h1><p>In this code we will classify directions from an aspect raster
+Leticia Lee
+July 10, 2018
+leticial@bu.edu</p>
 
 </div>
 </div>
@@ -11919,7 +11922,8 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">teak_tile</span><span class="p">,</span> <span class="n">teak_metadata</span> <span class="o">=</span> <span class="n">raster2array</span><span class="p">(</span><span class="n">teak_aspect_file</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#use the function to turn a raster to array</span>
+<span class="n">teak_tile</span><span class="p">,</span> <span class="n">teak_metadata</span> <span class="o">=</span> <span class="n">raster2array</span><span class="p">(</span><span class="n">teak_aspect_file</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -11978,9 +11982,7 @@ div#notebook {
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="classify-into-the-cardinal-directions">classify into the cardinal directions<a class="anchor-link" href="#classify-into-the-cardinal-directions">&#182;</a></h2><ol>
 <li>North</li>
-<li>East</li>
 <li>South</li>
-<li>West</li>
 </ol>
 
 </div>
@@ -12004,8 +12006,7 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[53]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">teak_cos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">teak_tile</span><span class="p">)</span>
-<span class="n">teak_reclass</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">teak_tile</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">teak_tile</span> <span class="o">&lt;=</span> <span class="mi">45</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">teak_tile</span> <span class="o">&gt;=</span> <span class="mi">315</span><span class="p">))]</span> <span class="o">=</span> <span class="mi">1</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">teak_reclass</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">teak_tile</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">teak_tile</span> <span class="o">&lt;=</span> <span class="mi">45</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">teak_tile</span> <span class="o">&gt;=</span> <span class="mi">315</span><span class="p">))]</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">teak_reclass</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">teak_tile</span><span class="o">&gt;</span><span class="mi">45</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">teak_tile</span><span class="o">&lt;=</span> <span class="mi">135</span><span class="p">))]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span> <span class="c1">#East</span>
 <span class="n">teak_reclass</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">teak_tile</span><span class="o">&gt;</span><span class="mi">135</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">teak_tile</span><span class="o">&lt;=</span> <span class="mi">225</span><span class="p">))]</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1">#south</span>
 <span class="n">teak_reclass</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">teak_tile</span><span class="o">&gt;</span><span class="mi">225</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">teak_tile</span><span class="o">&lt;=</span> <span class="mi">315</span><span class="p">))]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span> <span class="c1">#West</span>
