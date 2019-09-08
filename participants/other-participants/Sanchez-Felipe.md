@@ -1,4 +1,4 @@
-Hello, my name is `Felipe`. My name is enclosed in a `backtick` or `grave`./ The usage of a backtick or grave is typically used when highlighting (`code`) or a (`function`) within a plain text paragraph. Other options of highlighting include: **bold** and *italics*./ 
+Hello, my name is `Felipe`. My name is enclosed in a `backtick` or `grave`. The backtick or grave is typically used when highlighting (`code`) or a (`function`) within a plain text paragraph. Other options of highlighting include: **bold** and *italics*. 
 
 ***
 
