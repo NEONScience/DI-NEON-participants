@@ -1,0 +1,14 @@
+---
+title: "NEON.markdown"
+author: "Allyson"
+date: "10/24/2019"
+output: html_document
+---
+
+
+### **Hi my name is Allyson.**
+
+##I study *pollinators* and I hope to learn how broadly applicable NEON’s data is across a fragmented landscape 
+
+
+
