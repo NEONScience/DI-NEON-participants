@@ -13,6 +13,8 @@ data for 30 years.
 For more information on NEON, visit the website: 
 [www.neonscience.org](http://www.neonscience.org "National Ecological Observatory Network")
 
+WJC just added some hack lines here. For testing purposes.
+
 For NEON Data Skills educational resources, visit 
 [the NEON Data Skills section of the NEON website](http://www.neonscience.org/neon-data-skills).
 
